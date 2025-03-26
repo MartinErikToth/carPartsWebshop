@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
         <h2 class="item-name">{{ item.name }}</h2>
         <p class="item-category">Kategória: {{ item.category }}</p>
         <p class="item-price">Ár: {{ item.price + " HUF"}}</p>
-        <p class="item-quantity">Mennyiség: {{ item }}</p>
+        <p class="item-quantity">Mennyiség: {{ item.quantity }}</p>
         <p class="item-total-price">Összesen: {{ (item.price * item.quantity) | currency: 'HUF' }}</p>
         <button class="remove-button" (click)="removeFromCart(i)">Eltávolítás</button>
       </div>
