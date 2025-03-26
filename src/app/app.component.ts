@@ -34,7 +34,7 @@ import { RouterModule } from '@angular/router';
         padding: 10px 16px;
         font-weight: bold;
         border-radius: 4px;
-        transition: all 0.3s ease; /* Animáljuk az összes tulajdonság változást */
+        transition: all 0.3s ease; 
       }
       .nav-button:hover {
         background-color: rgba(255, 255, 255, 0.2); /* Finom háttérszín */
