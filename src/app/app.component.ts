@@ -7,50 +7,56 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [MatToolbarModule, RouterModule],
   template: `
-    <mat-toolbar color="primary" class="toolbar">
-      <span class="spacer"></span>
-      <a mat-button routerLink="/" class="nav-button">Főoldal</a>
-      <a mat-button routerLink="/products" class="nav-button">Termékek</a>
-      <a mat-button routerLink="/cart" class="nav-button">Kosár</a>
-      <a mat-button routerLink="/admin" class="nav-button">Admin</a>
-      <span class="spacer"></span>
-    </mat-toolbar>
+    <div class="home">
+      <mat-toolbar color="primary" class="navbar">
+        <span class="logo">Autoalkatrész Webshop</span>
+        <span class="spacer"></span>
+        <nav>
+          <button mat-button routerLink="/" class="nav-button">Főoldal</button>
+          <button mat-button routerLink="/products" class="nav-button">Termékek</button>
+          <button mat-button routerLink="/cart" class="nav-button">Kosár</button>
+          <button mat-button routerLink="/admin" class="nav-button">Admin</button>
+        </nav>
+      </mat-toolbar>
+    </div>  
     <router-outlet></router-outlet>
   `,
   styles: [
     `
-      .spacer {
-        flex: 1 1 auto;
-      }
-      mat-toolbar {
+      .navbar {
         display: flex;
         justify-content: center;
+        align-items: center;
         padding: 0 20px;
       }
-      .nav-button {
-        text-decoration: none;
-        color: black;
-        margin: 0 16px;
-        padding: 10px 16px;
+      .logo{
+        font-size: 1.5rem;
         font-weight: bold;
-        border-radius: 4px;
-        transition: all 0.3s ease; 
+      }
+      .nav-button {
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: none;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        background: none;
+        box-shadow: none;
+        border-radius: 30px; /* Ellipszis forma */
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       .nav-button:hover {
-        background-color: rgba(255, 255, 255, 0.2); /* Finom háttérszín */
-        color: #ff4081; /* A szöveg színe a hover effektusra */
-        transform: scale(1.1); /* Finom növelés */
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Enyhe árnyék */
+        background-color: #d1e7ff; /* Hover háttérszín */
+        color: #3f51b5; /* Hover szövegszín */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Enyhe árnyék */
       }
-      .nav-button:active {
-        transform: scale(1); /* Kattintáskor visszaugrik a normál méretre */
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Erősebb árnyék kattintáskor */
+      .nav-button:focus {
+        outline: none;
+      }
+      .spacer {
+        flex: 1;
       }
     `,
   ],
 })
-export class AppComponent {
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
-}
+export class AppComponent {}
