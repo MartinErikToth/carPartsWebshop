@@ -49,6 +49,7 @@ import { RouterModule } from '@angular/router';
         background-color: #d1e7ff; /* Hover háttérszín */
         color: #3f51b5; /* Hover szövegszín */
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Enyhe árnyék */
+        cursor: pointer;
       }
       .nav-button:focus {
         outline: none;

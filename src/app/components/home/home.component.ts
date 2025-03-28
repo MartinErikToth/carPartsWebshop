@@ -26,7 +26,6 @@ import { CommonModule } from '@angular/common';
       <section class="hero">
         <h1>Üdvözlünk az Autoalkatrész Webshopban!</h1>
         <p>Vásárolj minőségi alkatrészeket autódhoz!</p>
-        <button mat-raised-button color="accent" routerLink="/products">Termékek böngészése</button>
       </section>
 
       <section class="gallery">

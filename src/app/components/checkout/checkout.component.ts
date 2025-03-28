@@ -6,6 +6,7 @@ interface CartItem {
   name: string;
   price: number;
   quantity: number;
+  image: string;
 }
 
 @Component({
@@ -21,6 +22,7 @@ interface CartItem {
         <table class="order-table">
           <thead>
             <tr>
+              <th>Termék képe</th>
               <th>Termék</th>
               <th>Mennyiség</th>
               <th>Ár</th>
@@ -28,6 +30,7 @@ interface CartItem {
           </thead>
           <tbody>
             <tr *ngFor="let item of cart">
+              <td><img [src]="item.image" alt="{{ item.name }}" class="cart-item-image" /></td>
               <td>{{ item.name }}</td>
               <td>{{ item.quantity}} </td>
               <td>{{ item.price * item.quantity| currency: 'HUF ' }}</td>
@@ -102,6 +105,15 @@ interface CartItem {
       h1 {
         font-size: 2rem;
         margin-bottom: 20px;
+      }
+
+      .cart-item-image {
+        width: 60px; /* Módosíthatod a kívánt méretre */
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+        display: block;
+        margin: 0 auto;
       }
 
       .order-summary {

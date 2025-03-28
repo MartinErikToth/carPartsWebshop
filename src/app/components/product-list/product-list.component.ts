@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
       <h1>Termékek</h1>
       <div class="grid-container">
         <mat-card *ngFor="let product of products" class="product-card">
-         <img [src]="product.src" alt="{{ product.name }}" />
+         <img [src]="product.image" alt="{{ product.name }}" />
           <mat-card-title>{{ product.name }}</mat-card-title>
           <mat-card-content>
             <p>Kategória: {{ product.category }}</p>
@@ -27,7 +27,6 @@ import { FormsModule } from '@angular/forms';
           <button mat-raised-button color="accent" (click)="addToCart(product)">Kosárba</button>
         </mat-card>
       </div>
-      <img src="assets/images/olajszuro.png" alt="Olajszűrő" />
       <button class="kosarMegtekintes" mat-raised-button color="primary" [routerLink]="'/cart'">Kosár megtekintése</button>
     </div>
   `,
@@ -51,15 +50,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProductListComponent implements OnInit {
   products = [
-    { id: 1, name: 'Fékbetét', price: 12000, category: 'Fékek', selectedQuantity: 1, src: 'https://cdn.euautoteile.de/uploads/custom-catalog/eu/categories/500x500/10343.png' },
-    { id: 2, name: 'Olajszűrő', price: 4500, category: 'Szűrők', selectedQuantity: 1, image: 'assets/images/olajszuro.png' },
-    { id: 3, name: 'Gumiabroncs', price: 25000, category: 'Kerekek', selectedQuantity: 1, image: 'gumiabroncs.jpg' },
-    { id: 4, name: 'Akkumulátor', price: 18000, category: 'Elektromos rendszerek', selectedQuantity: 1, image: 'akkumulator.jpg' },
-    { id: 5, name: 'Légszűrő', price: 3500, category: 'Szűrők', selectedQuantity: 1, image: 'legszuro.jpg' },
-    { id: 6, name: 'Kormányösszekötő', price: 8000, category: 'Kormányzás', selectedQuantity: 1, image: 'kormanyosszekoto.jpg' },
+    { id: 1, name: 'Fékbetét', price: 12000, category: 'Fékek', selectedQuantity: 1, image: 'assets/fekbetet.png' },
+    { id: 2, name: 'Olajszűrő', price: 4500, category: 'Szűrők', selectedQuantity: 1, image: 'assets/fekbetet.png' },
+    { id: 3, name: 'Gumiabroncs', price: 25000, category: 'Kerekek', selectedQuantity: 1, image: 'assets/fekbetet.png' },
+    { id: 4, name: 'Akkumulátor', price: 18000, category: 'E-rendszerek', selectedQuantity: 1, image: 'assets/fekbetet.png' },
+    { id: 5, name: 'Légszűrő', price: 3500, category: 'Szűrők', selectedQuantity: 1, image: 'assets/fekbetet.png' },
+    { id: 6, name: 'Kormányösszekötő', price: 8000, category: 'Kormányzás', selectedQuantity: 1, image: 'assets/fekbetet.png' },
   ];
 
-  cart: { id: number, name: string, price: number, category: string, quantity: number }[] = [];
+  cart: { id: number, name: string, price: number, category: string, quantity: number, image: string}[] = [];
 
   constructor(private snackBar: MatSnackBar) {}
 
@@ -74,19 +73,27 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: any) {
     const existingProduct = this.cart.find(item => item.id === product.id);
-    
+  
     if (existingProduct) {
       existingProduct.quantity += product.selectedQuantity;
     } else {
-      this.cart.push({ ...product, quantity: product.selectedQuantity });
+      // A termékhez hozzáadjuk a képet is a kosárhoz
+      this.cart.push({ 
+        ...product, 
+        quantity: product.selectedQuantity,
+        image: product.image // biztosítjuk, hogy a kép is bekerüljön
+      });
     }
-
+  
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem('cart', JSON.stringify(this.cart));
     }
-
+  
     this.snackBar.open(`${product.name} hozzáadva a kosárhoz.`, 'OK', { duration: 3000 });
   }
+  
+  
+
 
   private isLocalStorageAvailable(): boolean {
     try {
