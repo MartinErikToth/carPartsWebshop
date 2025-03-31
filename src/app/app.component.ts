@@ -20,44 +20,24 @@ import { RouterModule } from '@angular/router';
       </mat-toolbar>
     </div>  
     <router-outlet></router-outlet>
-  `,
-  styles: [
-    `
-      .navbar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 20px;
-      }
-      .logo{
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
-      .nav-button {
-        font-size: 1rem;
-        font-weight: 500;
-        text-transform: none;
-        color: black;
-        padding: 10px 20px;
-        border: none;
-        background: none;
-        box-shadow: none;
-        border-radius: 30px; /* Ellipszis forma */
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-      .nav-button:hover {
-        background-color: #d1e7ff; /* Hover háttérszín */
-        color: #3f51b5; /* Hover szövegszín */
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Enyhe árnyék */
-        cursor: pointer;
-      }
-      .nav-button:focus {
-        outline: none;
-      }
-      .spacer {
-        flex: 1;
-      }
-    `,
-  ],
+    <footer>
+    <div class="footer-content">
+      <div class="contact-info">
+        <h3>Kapcsolat</h3>
+        <p><strong>Telefon:</strong> +36 1 234 5678</p>
+        <p><strong>Email:</strong> info&#64;webshop.hu</p>
+      </div>
+      <div class="social-media">
+        <h3>Kövess minket!</h3>
+        <a href="#" class="social-link">Facebook</a> | 
+        <a href="#" class="social-link">Instagram</a> | 
+        <a href="#" class="social-link">Twitter</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Autoalkatrész Webshop. Minden jog fenntartva.</p>
+      </div>
+    </div>
+  </footer>
+  `, styleUrls: ['./app.component.css'],
 })
 export class AppComponent {}
