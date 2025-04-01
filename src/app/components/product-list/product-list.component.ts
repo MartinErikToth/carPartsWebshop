@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, MatCardModule, MatButtonModule, PricePipe, RouterModule, FormsModule],  
   template: `
-    <div class="product-list">
+  <body>
+  <div class="product-list">
       <div class="header-container">
         <h1>Termékek</h1>
         <input type="text" [(ngModel)]="searchTerm" placeholder="Keresés..." class="search-box">
@@ -40,6 +41,7 @@ import { FormsModule } from '@angular/forms';
       </div>
       <button class="kosarMegtekintes" mat-raised-button color="primary" [routerLink]="'/cart'">Kosár megtekintése</button>
     </div>
+  </body>
   `,styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
