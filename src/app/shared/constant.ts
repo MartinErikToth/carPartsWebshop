@@ -7,10 +7,5 @@ export const ProfileObject = [
       lastname: 'Doe'
     },
     avatar: 'X)', // Alapértelmezett avatar
-    tasks: {
-      total: 0,
-      completed: 0,
-      pending: 0
-    }
   }
 ];

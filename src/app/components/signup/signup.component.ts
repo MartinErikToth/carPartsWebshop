@@ -82,11 +82,6 @@ export class SignupComponent {
       email: newUser.email,
       name: newUser.name,
       avatar: 'X)', // Alapértelmezett avatar
-      tasks: {
-        total: 0,
-        completed: 0,
-        pending: 0
-      }
     });
 
     // Elmentjük a frissített ProfileObject-et a localStorage-ba

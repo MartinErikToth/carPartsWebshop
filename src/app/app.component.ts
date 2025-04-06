@@ -3,6 +3,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -21,15 +22,30 @@ import { CommonModule } from '@angular/common';
           <button mat-button routerLink="/" class="nav-button">Főoldal</button>
           <button mat-button routerLink="/products" class="nav-button">Termékek</button>
           <button mat-button routerLink="/cart" class="nav-button">Kosár</button>
-          <button mat-button routerLink="/profile" class="nav-button">Profil</button>
+          <!--<button mat-button routerLink="/profile" class="nav-button">Profil</button>-->
 
-          <!-- Ha be van jelentkezve, akkor jelenjen meg a logout gomb -->
+          @if (isLoggedIn) {
+            <button mat-button routerLink="/profile" class="nav-button">Profil</button>
+          }
+
+          @if (isLoggedIn) {
+            <button mat-button routerLink="/login" class="nav-button" (click)="logout()">Kijelentkezés</button>
+          }
+
+
+          @if (!isLoggedIn) {
+            <button mat-button routerLink="/login" class="nav-button">Bejelentkezés</button>
+          }
+
+          <!-- Ha be van jelentkezve, akkor jelenjen meg a logout gomb 
           <button *ngIf="isLoggedIn" mat-button routerLink="/login" class="nav-button" (click)="logout()">Logout</button>
-          
-          <!-- Ha nincs bejelentkezve, akkor jelenjen meg a login gomb -->
-          <button *ngIf="!isLoggedIn" mat-button routerLink="/login" class="nav-button">Login</button>
-          
-          <button mat-button routerLink="/admin" class="nav-button">Admin</button>
+          <button *ngIf="!isLoggedIn" mat-button routerLink="/login" class="nav-button">Login</button
+          <button mat-button routerLink="/admin" class="nav-button">Admin</button>-->
+
+
+
+
+
         </nav>
       </mat-toolbar>
     </div>  
@@ -60,6 +76,8 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
+
+  intervalId: any;
 
   ngOnInit(): void {
     this.checkLoginStatus();
