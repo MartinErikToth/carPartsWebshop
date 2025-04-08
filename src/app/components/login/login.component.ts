@@ -38,7 +38,6 @@ export class LoginComponent {
   login() {
     this.loginError = '';
 
-    // Ellenőrizd az elmentett adatokat a localStorage-ból
     const storedEmail = localStorage.getItem('userEmail');
     const storedPassword = localStorage.getItem('userPassword');
 
@@ -46,13 +45,12 @@ export class LoginComponent {
       this.isLoading = true;
       this.showLoginForm = false;
 
-      // Bejelentkezés után navigálj
       localStorage.setItem('isLoggedIn', 'true');
       setTimeout(() => {
         this.router.navigate(['/profile']);
       }, 3000);
     } else {
-      this.loginError = 'Invalid email or password!';  // Correct error message
+      this.loginError = 'Hibás felhasználó név vagy jelszó!';  // Correct error message
     }
   }
 }

@@ -1,10 +1,11 @@
-<div class="login-container">
+
+  <div class="login-container">
     <h1>Bejelentkezés</h1>
     
     <div *ngIf="isLoading" class="loading-container">
-      <h2>Login in progress</h2>
+      <h2>Betöltés...</h2>
       <mat-spinner diameter="50"></mat-spinner>
-      <p>Please wait...</p>
+      <p>Kérlek várj, feldolgozás folyamatban</p>
     </div>
   
     <div *ngIf="showLoginForm">

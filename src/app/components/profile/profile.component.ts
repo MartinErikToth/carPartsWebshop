@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileObject } from '../../shared/constant';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
@@ -25,20 +23,19 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 export class ProfileComponent implements OnInit {
   selectedIndex = 0; // Kezdő index, ha van több profil
   ProfileObject: any[] = []; // Az összes felhasználói profil
-
+  language: string = 'hu';
+  isDarkMode: boolean = false;
   userEmail: string = ''; // A felhasználó emailje
   userName: string = '';  // A felhasználó neve
 
   constructor() {}
 
   ngOnInit(): void {
-    // Itt lehet betölteni a regisztrált felhasználó adatokat
     if (typeof window !== 'undefined' && window.localStorage) {
       const storedProfiles = localStorage.getItem('ProfileObject');
       if (storedProfiles) {
-        this.ProfileObject = JSON.parse(storedProfiles); // Betöltjük az adatokat
+        this.ProfileObject = JSON.parse(storedProfiles); 
       }
-      // Betöltjük a felhasználó nevét és email címét a localStorage-ból
       this.userName = localStorage.getItem('userName') || '';
       this.userEmail = localStorage.getItem('userEmail') || '';
     }
@@ -49,6 +46,6 @@ export class ProfileComponent implements OnInit {
   }
 
   trackByIndex(index: number, item: any): number {
-    return index; // Visszatér az index, így Angular jobban követi az elemeket
+    return index;
   }
 }

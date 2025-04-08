@@ -1,55 +1,93 @@
 <body>
-    <div class="profile-container">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>Felhasználói fiók</mat-card-title>
-            <mat-form-field appearance="outline">
-              <mat-label>Select Profile</mat-label>
-              <mat-select [value]="selectedIndex" (selectionChange)="reload($event.value)">
-                <mat-option *ngFor="let profile of ProfileObject; trackBy: trackByIndex" [value]="profile.id">
-                  {{ profile.name.firstname }} {{ profile.name.lastname }} <!-- Felhasználó neve -->
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </mat-card-header>
-      
-          <mat-card-content>
-            <div class="profile-info">
-              <div class="avatar-container">
-                <div class="avatar mat-elevation-z2">
-                  {{ ProfileObject[selectedIndex]?.avatar }}
-                </div>
-              </div>
-              <div class="user-details">
-                <h3 class="user-name">{{ userName }}</h3> <!-- Felhasználó neve -->
-                <div class="user-email">
-                  <mat-icon>email</mat-icon>
-                  <span>{{ userEmail }}</span> <!-- Felhasználó email címe -->
-                </div>
+  <div class="profile-container">
+    <!-- User Profile Card -->
+    <div class="profile-card">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Felhasználói fiók</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="profile-info">
+            <div class="avatar-container">
+              <div class="avatar mat-elevation-z2">
+                {{ ProfileObject[selectedIndex]?.avatar }}
               </div>
             </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
-
-<div class="profile-container">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Rendelések</mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content>
-      <div class="profile-info">
-        <div class="user-details">
-          <h3 class="user-name">Rendeléseid</h3> <!-- Felhasználó neve -->
-          <div class="user-email">
-            <mat-icon>sort</mat-icon>
-            <span>Hamarosan...</span> <!-- Felhasználó email címe -->
+            <div class="user-details">
+              <h3 class="user-name">{{ userName }}</h3>
+              <div class="user-email">
+                <mat-icon>email</mat-icon>
+                <span>{{ userEmail }}</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Orders Card -->
+    <div class="profile-card">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Rendelések</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="profile-info">
+            <div class="user-details">
+              <h3 class="user-name">Rendeléseid</h3>
+              <div class="user-email">
+                <mat-icon>sort</mat-icon>
+                <span>Hamarosan...</span>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+    <!-- Settings Card -->
+    <div class="profile-card">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Beállítások</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="profile-info">
+            <div class="user-details">
+              <h3 class="user-name">Fiók beállításai</h3>
+              <div class="user-email">
+                <mat-icon>settings</mat-icon>
+                <span>A beállítások módosítása hamarosan...</span>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Settings Card -->
+    <div class="profile-card">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Elérhetőségeid</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="profile-info">
+            <div class="user-details">
+              <h3 class="user-name">Fiók elérhetőségei</h3>
+              <div class="user-email">
+                <mat-icon>settings</mat-icon>
+                <span>Hamarosan...</span>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </body>
