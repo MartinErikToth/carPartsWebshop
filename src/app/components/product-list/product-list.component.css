@@ -1,149 +1,215 @@
 .product-list {
-    padding: 30px;
-    margin: 10px;
-    box-sizing: border-box;
+  padding: 2rem;
+  margin: 1rem;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  text-align: left;
+  flex-wrap: wrap; /* Ha szükséges, a tartalom új sorba törhet */
+}
+
+.header-container h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-right: 2rem; /* Néhány hely a cím és a többi elem között */
+}
+
+.search-box,
+.category-filter {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.search-box:focus,
+.category-filter:focus {
+  border-color: #3f51b5;
+  outline: none;
+}
+
+.search-box {
+  max-width: 300px;
+  width: 100%;
+}
+
+.category-filter {
+  max-width: 200px;
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.product-card {
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.product-card mat-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card mat-card-content p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border-color: #3f51b5;
+  outline: none;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.kosarMegtekintes {
+  margin: 3rem auto;
+  display: block;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.kosarMegtekintes:hover {
+  background-color: #303f9f;
+}
+
+button[routerLink] {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.product-card button {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #3f51b5;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: #303f9f;
+}
+
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ff0000;
+  margin-top: 2rem;
+}
+
+footer {
+  margin-top: 100px;
+  padding: 20px;
+  background: #2c3e50;
+  color: white;
   }
   
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .header-container h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  .search-box {
-    width: 50%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .category-filter {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  .product-card {
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .product-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-  
-  .product-card mat-card-content {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .product-card mat-card-content p {
-    margin: 10px 0;
-  }
-  
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 8px;
-  }
-  
-  input[type="number"]:focus {
-    border-color: #3f51b5;
-    outline: none;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
-  }
-  
-  .kosarMegtekintes {
-    margin: 30px auto;
-    display: block;
-  }
-  
-  button[routerLink] {
-    margin-bottom: 100px;
-  }
-  
-  .product-card button {
-    margin-top: 15px;
-  }
-  
-  .product-list .product-card button {
-    margin-top: 10px;
-  }
-  .no-results {
-    text-align: center;
-    font-size: 18px;
-    color: #ff0000;
-    margin-top: 20px;
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   }
 
-  footer {
-    margin-top: 40px;
-    padding: 20px;
-    background: #2c3e50;
-    color: white;
+.footer-content div {
+  flex: 1 1 30%;
+  margin: 10px;
   }
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
   }
-  .footer-content div {
-    flex: 1 1 30%;
-    margin: 10px;
+
+.contact-info h3, .social-media h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
   }
-  .footer-bottom {
+
+.social-link {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px; 
+  }
+
+.social-link:hover {
+  text-decoration: underline;
+  }
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-top: 20px;
-    font-size: 0.9rem;
   }
-  .contact-info h3, .social-media h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+
+  .search-box,
+  .category-filter {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1rem;
   }
-  .social-link {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
+
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
   }
-  .social-link:hover {
-    text-decoration: underline;
-  }
+}

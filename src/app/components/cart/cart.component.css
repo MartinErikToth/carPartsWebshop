@@ -1,45 +1,43 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
+/* Kosár alap beállítások */
 .cart-container {
-  padding: 30px;
-  margin: 10px;
+  padding: 2rem;
+  margin: 1rem;
   box-sizing: border-box;
   min-height: 400px;
+  background-color: #fafafa;
+  border-radius: 10px;
 }
 
 .cart-container h1 {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
   color: #333;
 }
 
 .cart-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Rugalmas elrendezés */
-  gap: 20px; /* Egyenletes távolság */
-  margin-top: 20px;
+  gap: 1.5rem; /* Egyenletes távolság */
+  margin-top: 2rem;
   justify-content: center;
 }
 
 .cart-card {
-  padding: 20px;
-  border-radius: 8px;
+  padding: 1.5rem;
+  border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .cart-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .cart-item-image {
@@ -47,17 +45,18 @@ html, body {
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 
 .cart-card p {
-  margin: 10px 0;
+  margin: 0.5rem 0;
   font-size: 1rem;
   color: #333;
+  text-align: center;
 }
 
 .cart-card .remove-button {
-  margin-top: 15px;
+  margin-top: 1rem;
   background-color: #e63946;
   color: white;
   border: none;
@@ -65,16 +64,17 @@ html, body {
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .cart-card .remove-button:hover {
   background-color: #ff6b6b;
 }
 
+/* Kosár műveletek (törlés, pénztár) */
 .cart-actions {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 2rem;
   min-height: 100px;
 }
 
@@ -107,81 +107,112 @@ html, body {
 
 .checkout-button,
 .clear-cart-button {
-    background-color: #005f89;
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    margin: 0 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  background-color: #005f89;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .checkout-button:hover {
-    background-color: #d1e7ff;
-    color: black;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+  background-color: #d1e7ff;
+  color: black;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .clear-cart-button {
-    background-color: #e63946;
+  background-color: #e63946;
 }
 
 .clear-cart-button:hover {
-    background-color: #ffd1d1;
-    color: black;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffd1d1;
+  color: black;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .empty-cart {
   text-align: center;
   margin-top: 20px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.empty-cart p {
+  margin-top: 10px;
 }
 
 .back-to-products {
-    background-color: #0077b6;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  background-color: #0077b6;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .back-to-products:hover {
-    background-color: #005f89;
+  background-color: #005f89;
 }
 
 footer {
+  margin-top: 251px;
   padding: 20px;
   background: #2c3e50;
   color: white;
-}
+  }
+  
 .footer-content {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-}
+  }
+
 .footer-content div {
   flex: 1 1 30%;
   margin: 10px;
-}
+  }
+
 .footer-bottom {
   text-align: center;
-  margin-top: 20px;    
+  margin-top: 20px;
   font-size: 0.9rem;
-}
+  }
+
 .contact-info h3, .social-media h3 {
   margin-bottom: 10px;
   font-size: 1.2rem;
-}
+  }
+
 .social-link {
   color: #fff;
   text-decoration: none;
-  margin-right: 10px;
-}
+  margin-right: 10px; 
+  }
+
 .social-link:hover {
   text-decoration: underline;
+  }
+
+/* Reszponzív beállítások kisebb képernyők számára */
+@media (max-width: 768px) {
+  .cart-grid {
+    grid-template-columns: 1fr 1fr; /* Kisebb képernyőkön 2 oszlop */
+  }
+
+  .cart-card {
+    padding: 1rem;
+  }
+
+  .cart-card .remove-button,
+  .checkout-button,
+  .clear-cart-button {
+    width: 100%; /* A gombok szélességét 100%-ra állítjuk */
+    margin: 10px 0;
+  }
 }

@@ -21,47 +21,9 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     CommonModule,
   ],
-  template: `
-    <div class="home">
-      <section class="hero">
-        <h1>Üdvözlünk az Autoalkatrész Webshopban!</h1>
-        <p>Vásárolj minőségi alkatrészeket autódhoz!</p>
-      </section>
-
-      <section class="gallery">
-        <h2>Alkatrészek Képgaléria</h2>
-        <div class="gallery-container">
-          <div class="gallery-scroll">
-            <mat-card *ngFor="let image of images">
-              <img mat-card-image [src]="image.src" [alt]="image.alt" />
-              <mat-card-content>
-                <p>{{ image.alt }}</p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        </div>
-      </section>
-
-      <section class="contact">
-        <h2>Kapcsolatfelvétel</h2>
-        <form class="contact-form">
-          <mat-form-field appearance="outline">
-            <mat-label>Neved</mat-label>
-            <input matInput placeholder="Add meg a neved" />
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Email címed</mat-label>
-            <input matInput type="email" placeholder="Add meg az email címed" />
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Üzenet</mat-label>
-            <textarea matInput placeholder="Írd be az üzeneted"></textarea>
-          </mat-form-field>
-          <button mat-raised-button color="primary" type="submit">Küldés</button>
-        </form>
-      </section>
-    </div>
-  `,styleUrls: ['./home.component.css'],
+  template: ``,
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
   images = [

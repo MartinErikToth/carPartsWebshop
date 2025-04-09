@@ -24,7 +24,7 @@ import { ProfileObject } from '../../shared/constant';
     RouterLink
   ],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
   signUpForm = new FormGroup({
@@ -48,17 +48,17 @@ export class SignupComponent {
       this.signupError = 'Please correct the form errors before submitting.';
       return;
     }
-
+  
     const password = this.signUpForm.get('password');
     const rePassword = this.signUpForm.get('rePassword');
-
+  
     if (password?.value !== rePassword?.value) {
       return;
     }
-
+  
     this.isLoading = true;
     this.showForm = false;
-
+  
     const newUser: User = {
       name: {
         firstname: this.signUpForm.value.name?.firstname || '',
@@ -67,31 +67,31 @@ export class SignupComponent {
       email: this.signUpForm.value.email || '',
       password: this.signUpForm.value.password || '',
     };
-
+  
     // Tárold el az adatokat a localStorage-ban
     localStorage.setItem('userEmail', newUser.email);
     localStorage.setItem('userPassword', newUser.password);
-
+  
     // Betöltjük a meglévő ProfileObject-et a localStorage-ból
     const storedProfiles = localStorage.getItem('ProfileObject');
     const profileObject = storedProfiles ? JSON.parse(storedProfiles) : [];
-
+  
     // Hozzáadjuk az új felhasználót a ProfileObject-hez
-    ProfileObject.push({
+    profileObject.push({
       id: profileObject.length + 1,
       email: newUser.email,
       name: newUser.name,
       avatar: 'X)', // Alapértelmezett avatar
     });
-
+  
     // Elmentjük a frissített ProfileObject-et a localStorage-ba
-    localStorage.setItem('ProfileObject', JSON.stringify(ProfileObject));
-
+    localStorage.setItem('ProfileObject', JSON.stringify(profileObject));
+  
     console.log('New user:', newUser);
-    console.log('ProfileObject:', ProfileObject);
-
+    console.log('ProfileObject:', profileObject);
+  
     setTimeout(() => {
       this.router.navigateByUrl('/login');
     }, 2000);
-  }
+  }  
 }

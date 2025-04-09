@@ -1,102 +1,73 @@
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common'; 
-
+import { CommonModule } from '@angular/common';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    MatToolbarModule, 
-    RouterModule, 
-    CommonModule  
+    MatToolbarModule,
+    RouterModule,
+    CommonModule
   ],
-  template: `
-  <body>
-  <div class="home">
-      <mat-toolbar color="primary" class="navbar">
-        <span class="logo">Autoalkatrész Webshop</span>
-        <span class="spacer"></span>
-        <nav>
-          <button mat-button routerLink="/" class="nav-button">Főoldal</button>
-          <button mat-button routerLink="/products" class="nav-button">Termékek</button>
-          <button mat-button routerLink="/cart" class="nav-button">Kosár</button>
-          <!--<button mat-button routerLink="/profile" class="nav-button">Profil</button>-->
-
-          @if (isLoggedIn) {
-            <button mat-button routerLink="/profile" class="nav-button">Profil</button>
-          }
-
-          @if (isLoggedIn) {
-            <button mat-button routerLink="/login" class="nav-button" (click)="logout()">Kijelentkezés</button>
-          }
-
-
-          @if (!isLoggedIn) {
-            <button mat-button routerLink="/login" class="nav-button">Bejelentkezés</button>
-          }
-
-          <!-- Ha be van jelentkezve, akkor jelenjen meg a logout gomb 
-          <button *ngIf="isLoggedIn" mat-button routerLink="/login" class="nav-button" (click)="logout()">Logout</button>
-          <button *ngIf="!isLoggedIn" mat-button routerLink="/login" class="nav-button">Login</button
-          <button mat-button routerLink="/admin" class="nav-button">Admin</button>-->
-
-
-
-
-
-        </nav>
-      </mat-toolbar>
-    </div>  
-    <router-outlet></router-outlet>
-  </body>
-  <footer>
-    <div class="footer-content">
-    <div class="contact-info">
-        <h3>Kapcsolat</h3>
-        <p><strong>Telefon:</strong> +36 1 234 5678</p>
-        <p><strong>Email:</strong> info&#64;webshop.hu</p>
-    </div>
-    <div class="social-media">
-        <h3>Kövess minket!</h3>
-        <a href="#" class="social-link">Facebook</a> | 
-        <a href="#" class="social-link">Instagram</a> | 
-        <a href="#" class="social-link">Twitter</a>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2025 Autoalkatrész Webshop. Minden jog fenntartva.</p>
-    </div>
-    </div>
-</footer>
-  `,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   isLoggedIn = false;
+  isHomePage = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
-
-  intervalId: any;
+  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router) {}
 
   ngOnInit(): void {
     this.checkLoginStatus();
+
+    // Figyelünk a route változásokra
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.checkIfHomePage();
+      this.checkLoginStatus();  // Frissítjük az isLoggedIn állapotot
+    });
+
+    // Inicializáljuk az isHomePage állapotot
+    this.checkIfHomePage();
   }
 
+  // Ellenőrizzük a bejelentkezett státuszt
   checkLoginStatus(): void {
-    // Ellenőrizzük, hogy létezik-e localStorage
     if (typeof window !== 'undefined' && window.localStorage) {
       this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     }
-    // Frissítjük a komponens detektálását
-    this.changeDetectorRef.detectChanges(); 
+
+    // A változtatások észlelése az Angular számára
+    this.changeDetectorRef.detectChanges();
   }
 
+  // Ellenőrizzük, hogy a felhasználó a főoldalon van-e
+  checkIfHomePage(): void {
+    this.isHomePage = this.router.url === '/' || this.router.url === '/home';
+  }
+
+  // Kijelentkezés
   logout(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('isLoggedIn', 'false');
     }
     this.isLoggedIn = false;
-    window.location.href = '/login';
+    this.changeDetectorRef.detectChanges(); // Kényszerített frissítés
+    window.location.href = '/login'; // Átirányítás a bejelentkező oldalra
+  }
+
+  // Bejelentkezés után frissítés
+  login(): void {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('isLoggedIn', 'true');
+    }
+    this.isLoggedIn = true;
+    this.changeDetectorRef.detectChanges(); // Kényszerített frissítés
+    this.router.navigate(['/profile']); // Átirányítás a profil oldalra
   }
 }

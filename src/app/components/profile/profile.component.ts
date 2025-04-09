@@ -34,10 +34,15 @@ export class ProfileComponent implements OnInit {
     if (typeof window !== 'undefined' && window.localStorage) {
       const storedProfiles = localStorage.getItem('ProfileObject');
       if (storedProfiles) {
-        this.ProfileObject = JSON.parse(storedProfiles); 
+        this.ProfileObject = JSON.parse(storedProfiles);
       }
-      this.userName = localStorage.getItem('userName') || '';
-      this.userEmail = localStorage.getItem('userEmail') || '';
+    }
+  
+    // A bejelentkezett felhasználó adatainak frissítése
+    const currentProfile = this.ProfileObject.find(profile => profile.email === localStorage.getItem('userEmail'));
+    if (currentProfile) {
+      this.userName = `${currentProfile.name.firstname} ${currentProfile.name.lastname}`;
+      this.userEmail = currentProfile.email;
     }
   }
 

@@ -10,13 +10,14 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirectálás /home-ra
+    { path: 'home', component: HomeComponent },
     { path: 'products', component: ProductListComponent },
     { path: 'products/:id', component: ProductDetailComponent },
     { path: 'cart', component: CartComponent },
     { path: 'checkout', component: CheckoutComponent },
     { path: 'admin', component: AdminPanelComponent },
     { path: 'profile', component: ProfileComponent },
-    { path: 'signup', component: SignupComponent },  // Ezt ellenőrizd!
+    { path: 'signup', component: SignupComponent }, 
     { path: 'login', component: LoginComponent }
 ];
