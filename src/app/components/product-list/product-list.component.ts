@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PricePipe } from "../../pipes/price.pipe";
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
+import { PricePipe} from "../../shared/pipes/price.pipe";
+import { PRODUCTS } from '../../shared/products/mock-products';
+import { CATEGORIES } from '../../shared/categories/mock-categories';
 
 @Component({
   selector: 'app-product-list',
@@ -19,15 +21,9 @@ import { v4 as uuidv4 } from 'uuid';
 export class ProductListComponent implements OnInit {
   searchTerm: string = '';
   selectedCategory: string = '';
-
-  products = [
-    { id: uuidv4(), name: 'Fékbetét', price: 12000, category: 'Fékek', selectedQuantity: 1, image: 'assets/fekbetet.png' },
-    { id: uuidv4(), name: 'Olajszűrő', price: 4500, category: 'Szűrők', selectedQuantity: 1, image: 'assets/fekbetet.png' },
-    { id: uuidv4(), name: 'Gumiabroncs', price: 25000, category: 'Kerekek', selectedQuantity: 1, image: 'assets/fekbetet.png' },
-    { id: uuidv4(), name: 'Akkumulátor', price: 18000, category: 'E-rendszerek', selectedQuantity: 1, image: 'assets/fekbetet.png' },
-    { id: uuidv4(), name: 'Légszűrő', price: 3500, category: 'Szűrők', selectedQuantity: 1, image: 'assets/fekbetet.png' },
-    { id: uuidv4(), name: 'Kormányösszekötő', price: 8000, category: 'Kormányzás', selectedQuantity: 1, image: 'assets/fekbetet.png' },
-  ];
+  
+  products = PRODUCTS;
+  categories = CATEGORIES;
 
   cart: { id: number, name: string, price: number, category: string, quantity: number, image: string}[] = [];
 

@@ -7,8 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { User } from '../../shared/User';
-import { ProfileObject } from '../../shared/constant';
+import { User } from '../../shared/users/User';
+import { ProfileObject } from '../../shared/users/constant';
 
 @Component({
   selector: 'app-signup',

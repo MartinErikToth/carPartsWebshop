@@ -2,10 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'price',
-  standalone: true, // Standalone pipe
+  standalone: true, 
 })
 export class PricePipe implements PipeTransform {
   transform(value: number): string {
-    return `${value.toLocaleString('hu-HU')} Ft`;
+    return `${value.toLocaleString('hu-HU')} HUF`;
   }
 }

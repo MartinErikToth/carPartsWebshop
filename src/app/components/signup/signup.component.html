@@ -4,40 +4,40 @@
   <div *ngIf="isLoading" class="loading-container">
     <h2>Regisztráció folyamatban..</h2>
     <mat-spinner diameter="50"></mat-spinner>
-    <p>érlek várj, feldolgozás folyamatban...</p>
+    <p>Kérlek várj, feldolgozás folyamatban...</p>
   </div>
 
 
   <form [hidden]="!showForm" [formGroup]="signUpForm" (ngSubmit)="signup()" class="signup-form">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput type="email" formControlName="email">
+      <input matInput type="email" placeholder="example@gmail.com" formControlName="email">
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
 
     <div class="name-row" formGroupName="name">
       <mat-form-field appearance="outline">
-        <mat-label>First Name</mat-label>
-        <input matInput formControlName="firstname">
+        <mat-label>Vezetéknév</mat-label>
+        <input matInput formControlName="firstname" placeholder="Minta">
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Last Name</mat-label>
-        <input matInput formControlName="lastname">
+        <mat-label>Keresztnév</mat-label>
+        <input matInput formControlName="lastname" placeholder="Nev">
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
     </div>
 
     <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password">
+      <mat-label>Jelszó</mat-label>
+      <input matInput type="password" formControlName="password" placeholder="********">
       <mat-icon matSuffix>lock</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Confirm Password</mat-label>
-      <input matInput type="password" formControlName="rePassword">
+      <mat-label>Jelszó mégegyszer</mat-label>
+      <input matInput type="password" formControlName="rePassword" placeholder="********">
       <mat-icon matSuffix>lock</mat-icon>
     </mat-form-field>
 

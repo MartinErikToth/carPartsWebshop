@@ -38,41 +38,33 @@
     flex: 1;
   }
 
-footer {
-    margin-top: 500px;
-    padding: 20px;
-    background: #2c3e50;
-    color: white;
-    }
-    
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    }
+mat-sidenav-container {
+  height: 100%;
+}
 
-.footer-content div {
-    flex: 1 1 30%;
-    margin: 10px;
-    }
+mat-toolbar{
+  mat-icon {
+      font-size: 28px; /* Növelt ikon méret */
+      margin-right: 2px; /* Növelt margó */
+      color:  black; /* Alap szín */
+      transition: color 0.3s ease, transform 0.3s ease; /* Animáció a szín és a méret változásához */
+  }
+}
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    }
+mat-sidenav {
+  border-radius: 0;
+}
 
-.contact-info h3, .social-media h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    }
+.menu-toggle-button {
+  display: none;
+}
 
-.social-link {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px; 
-    }
-
-.social-link:hover {
-    text-decoration: underline;
-    }
+@media (max-width: 768px) {
+  .menu-toggle-button {
+      display: block;
+  }
+  
+  nav ul {
+      display: none;
+  }
+}

@@ -1,7 +1,12 @@
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
+import { NavigationEnd, RouterModule } from '@angular/router'; 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MenuComponent } from './shared/menu/app-menu.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 @Component({
@@ -10,12 +15,19 @@ import { filter } from 'rxjs';
   imports: [
     MatToolbarModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MenuComponent,
+    MatMenuModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   isLoggedIn = false;
   isHomePage = false;
 
@@ -24,7 +36,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.checkLoginStatus();
 
-    // Figyelünk a route változásokra
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -32,42 +43,39 @@ export class AppComponent implements OnInit {
       this.checkLoginStatus();  // Frissítjük az isLoggedIn állapotot
     });
 
-    // Inicializáljuk az isHomePage állapotot
     this.checkIfHomePage();
   }
 
-  // Ellenőrizzük a bejelentkezett státuszt
   checkLoginStatus(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     }
-
-    // A változtatások észlelése az Angular számára
     this.changeDetectorRef.detectChanges();
   }
 
-  // Ellenőrizzük, hogy a felhasználó a főoldalon van-e
   checkIfHomePage(): void {
     this.isHomePage = this.router.url === '/' || this.router.url === '/home';
   }
 
-  // Kijelentkezés
   logout(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('isLoggedIn', 'false');
     }
     this.isLoggedIn = false;
-    this.changeDetectorRef.detectChanges(); // Kényszerített frissítés
-    window.location.href = '/login'; // Átirányítás a bejelentkező oldalra
+    this.changeDetectorRef.detectChanges(); 
+    window.location.href = '/login'; 
   }
 
-  // Bejelentkezés után frissítés
   login(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('isLoggedIn', 'true');
     }
     this.isLoggedIn = true;
-    this.changeDetectorRef.detectChanges(); // Kényszerített frissítés
-    this.router.navigate(['/profile']); // Átirányítás a profil oldalra
+    this.changeDetectorRef.detectChanges(); 
+    this.router.navigate(['/profile']); 
+  }
+
+  onToggleSidenav(sidenav: MatSidenav) {
+    sidenav.toggle();
   }
 }
