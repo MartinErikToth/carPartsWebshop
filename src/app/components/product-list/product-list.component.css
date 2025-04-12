@@ -112,7 +112,6 @@ label {
 .kosarMegtekintes {
   margin: 3rem auto;
   display: block;
-  padding: 1rem 2rem;
   font-size: 1.1rem;
   background-color: #3f51b5;
   color: white;
@@ -121,10 +120,6 @@ label {
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-.kosarMegtekintes:hover {
-  background-color: #303f9f;
 }
 
 button[routerLink] {
@@ -138,6 +133,7 @@ button[routerLink] {
   padding: 0.8rem;
   font-size: 1rem;
   color: white;
+  margin-top: 10px;
   background-color: #3f51b5;
   border: none;
   border-radius: 8px;

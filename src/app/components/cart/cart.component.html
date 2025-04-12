@@ -21,8 +21,10 @@
 
 
     <div *ngIf="cart.length > 0" class="cart-actions">
-      <button class="checkout-button" (click)="proceedToCheckout()">Fizetés</button>
-      <button class="clear-cart-button" (click)="clearCart()">Kosár törlése</button>
+      <div class="button-container">
+        <button class="checkout-button" (click)="proceedToCheckout()">Fizetés</button>
+        <button class="clear-cart-button" (click)="clearCart()">Kosár törlése</button>
+      </div>
     </div>
 </div>
 <footer>

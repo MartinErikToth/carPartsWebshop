@@ -44,19 +44,41 @@ mat-sidenav-container {
 
 mat-toolbar{
   mat-icon {
-      font-size: 28px; /* Növelt ikon méret */
-      margin-right: 2px; /* Növelt margó */
-      color:  black; /* Alap szín */
-      transition: color 0.3s ease, transform 0.3s ease; /* Animáció a szín és a méret változásához */
+    font-size: 28px; /* Növelt ikon méret */
+    margin-right: 12px; /* Növelt margó a szomszédos elemektől */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animáció a szín és a méret változásához */
+    cursor: pointer; /* Kéz ikon mutatása */ /* Animáció a szín és a méret változásához */
   }
 }
 
+
 mat-sidenav {
-  border-radius: 0;
+  background-color: #fff; /* Fehér háttér */
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15); /* Árnyék a menü oldalon */
+  border-radius: 0 8px 8px 0; /* Kerekített sarkok csak a jobb oldalon */
+  padding: 16px; /* Belső margó */
 }
 
+mat-sidenav.mat-drawer-opened {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateX(0); /* Sidenav ki-be csúsztatása */
+}
+
+/* mat-sidenav bezárás animáció */
+mat-sidenav.mat-drawer-closed {
+  transform: translateX(100%); /* Elrejtés jobbra */
+}
+
+
 .menu-toggle-button {
-  display: none;
+  display: none; /* Alapértelmezés szerint rejtett */
+  position: absolute; /* Rögzített pozíció mobilon */
+  right: 16px; /* Jobb oldali távolság */
+  z-index: 1000; /* A gomb mindig felül lesz */
+  background-color: transparent; /* Átlátszó háttér */
+  border: none; /* Nincs keret */
+  cursor: pointer; /* Kéz mutató */
+  padding: 10px;
 }
 
 @media (max-width: 768px) {

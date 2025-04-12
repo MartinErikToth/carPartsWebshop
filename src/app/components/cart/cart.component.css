@@ -60,6 +60,7 @@
   background-color: #e63946;
   color: white;
   border: none;
+  
   padding: 10px 15px;
   border-radius: 5px;
   font-size: 1rem;
@@ -78,44 +79,25 @@
   min-height: 100px;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column; /* Függőleges elrendezés */
+  align-items: center; /* Középre helyezi a gombokat */
+  justify-content: center; /* Függőlegesen középre helyezés */
+  }
+
 .checkout-button,
 .clear-cart-button {
   background-color: #005f89;
   color: white;
   border: none;
   padding: 12px 18px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1rem;
-  margin: 10px;
+  width: 50%; /* A gombok szélessége 50% */
+  margin: 10px 0; /* Függőleges margó */
   cursor: pointer;
   transition: background-color 0.3s;
-}
-
-.checkout-button:hover {
-  background-color: #d1e7ff;
-  color: black;
-}
-
-.clear-cart-button {
-  background-color: #e63946;
-}
-
-.clear-cart-button:hover {
-  background-color: #ff6b6b;
-  color: black;
-}
-
-.checkout-button,
-.clear-cart-button {
-  background-color: #005f89;
-  color: white;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  margin: 0 8px;
-  cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .checkout-button:hover {
@@ -129,7 +111,7 @@
 }
 
 .clear-cart-button:hover {
-  background-color: #ffd1d1;
+  background-color: #ff6b6b;
   color: black;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
 }
@@ -211,8 +193,7 @@ footer {
 
   .cart-card .remove-button,
   .checkout-button,
-  .clear-cart-button {
-    width: 100%; /* A gombok szélességét 100%-ra állítjuk */
+  .clear-cart-button { 
     margin: 10px 0;
   }
 }
