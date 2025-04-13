@@ -45,7 +45,7 @@ export class SignupComponent {
 
   signup(): void {
     if (this.signUpForm.invalid) {
-      this.signupError = 'Please correct the form errors before submitting.';
+      this.signupError = 'Ellenőzizd a megadott adatok helyességét!';
       return;
     }
   
@@ -68,30 +68,24 @@ export class SignupComponent {
       password: this.signUpForm.value.password || '',
     };
   
-    // Tárold el az adatokat a localStorage-ban
     localStorage.setItem('userEmail', newUser.email);
     localStorage.setItem('userPassword', newUser.password);
   
-    // Betöltjük a meglévő ProfileObject-et a localStorage-ból
     const storedProfiles = localStorage.getItem('ProfileObject');
     const profileObject = storedProfiles ? JSON.parse(storedProfiles) : [];
   
-    // Hozzáadjuk az új felhasználót a ProfileObject-hez
     profileObject.push({
       id: profileObject.length + 1,
       email: newUser.email,
       name: newUser.name,
-      avatar: 'X)', // Alapértelmezett avatar
+      avatar: 'X)', 
     });
   
-    // Elmentjük a frissített ProfileObject-et a localStorage-ba
     localStorage.setItem('ProfileObject', JSON.stringify(profileObject));
-  
-    console.log('New user:', newUser);
-    console.log('ProfileObject:', profileObject);
+
   
     setTimeout(() => {
       this.router.navigateByUrl('/login');
-    }, 2000);
+    });
   }  
 }

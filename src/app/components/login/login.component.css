@@ -7,29 +7,29 @@
   background-color: #ffffff;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-family: 'Roboto', sans-serif; /* Updated font for a more modern look */
+  font-family: 'Roboto', sans-serif; 
   transition: all 0.3s ease;
-  border: 1px solid #ddd; /* Light border to define the container */
+  border: 1px solid #ddd; 
 }
 
-/* Header styles */
+
 .login-container h1 {
   margin-bottom: 20px;
   color: #333;
   font-size: 26px;
   font-weight: 700;
-  text-transform: uppercase; /* For a more professional look */
+  text-transform: uppercase; 
   letter-spacing: 1px;
 }
 
-/* Form styles */
+
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Input field styles */
+
 .login-form input {
   padding: 14px 18px;
   border: 1px solid #ddd;
@@ -41,15 +41,15 @@
 }
 
 .login-form input:focus {
-  border-color: #007BFF; /* Blue color for focus */
+  border-color: #007BFF; 
   background-color: #fff;
   outline: none;
 }
 
-/* Button styles */
+
 .login-form button {
   padding: 14px 18px;
-  background-color: #007BFF; /* Blue button for a modern look */
+  background-color: #007BFF; 
   color: white;
   border: none;
   border-radius: 8px;
@@ -59,17 +59,16 @@
 }
 
 .login-form button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
 }
 
-/* Error message styling */
 .error-message {
-  color: #d9534f; /* Red color for error message */
+  color: #d9534f; 
   margin-top: -10px;
   font-size: 14px;
 }
 
-/* Loading container styles */
+
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -90,7 +89,7 @@
   color: #555;
 }
 
-/* Overlay styling for the login form */
+
 .login-overlay {
   position: fixed;
   top: 0;
@@ -101,10 +100,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Ensure it appears above other content */
+  z-index: 999; 
 }
 
-/* Content inside the overlay */
 .overlay-content {
   background-color: white;
   padding: 30px;
@@ -115,10 +113,10 @@
   text-align: center;
 }
 
-/* Button inside the overlay to close */
+
 .overlay-content button {
   padding: 10px 16px;
-  background-color: #f44336; /* Red color for the close button */
+  background-color: #f44336; 
   color: white;
   border: none;
   border-radius: 6px;

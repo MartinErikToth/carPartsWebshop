@@ -1,5 +1,13 @@
 # AutoalkatreszWebshop
 
+Kedves Javitó(k)!
+
+Az app csak BÉTA, azaz csak mockolt adatokat töltök be mindig, amiket tetszés szerint lehet törölni, hozzáadni, frissiteni és egyéb..
+
+Vannak oldalak amiket csak a 2. mérföldkőre ilyen például a termékek leírása, admin oldal stb..
+
+
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
 
 ## Development server

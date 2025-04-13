@@ -19,14 +19,14 @@
     border: none;
     background: none;
     box-shadow: none;
-    border-radius: 30px; /* Ellipszis forma */
+    border-radius: 30px; 
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
 .nav-button:hover {
-    background-color: #d1e7ff; /* Hover háttérszín */
-    color: #3f51b5; /* Hover szövegszín */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Enyhe árnyék */
+    background-color: #d1e7ff;
+    color: #3f51b5; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
     cursor: pointer;
   }
 
@@ -44,40 +44,40 @@ mat-sidenav-container {
 
 mat-toolbar{
   mat-icon {
-    font-size: 28px; /* Növelt ikon méret */
-    margin-right: 12px; /* Növelt margó a szomszédos elemektől */
-    transition: color 0.3s ease, transform 0.3s ease; /* Animáció a szín és a méret változásához */
-    cursor: pointer; /* Kéz ikon mutatása */ /* Animáció a szín és a méret változásához */
+    font-size: 28px; 
+    margin-right: 12px; 
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: pointer; 
   }
 }
 
 
 mat-sidenav {
-  background-color: #fff; /* Fehér háttér */
-  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15); /* Árnyék a menü oldalon */
-  border-radius: 0 8px 8px 0; /* Kerekített sarkok csak a jobb oldalon */
-  padding: 16px; /* Belső margó */
+  background-color: #fff; 
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15); 
+  border-radius: 0 8px 8px 0; 
+  padding: 16px; 
 }
 
 mat-sidenav.mat-drawer-opened {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transform: translateX(0); /* Sidenav ki-be csúsztatása */
+  transform: translateX(0); 
 }
 
-/* mat-sidenav bezárás animáció */
+
 mat-sidenav.mat-drawer-closed {
-  transform: translateX(100%); /* Elrejtés jobbra */
+  transform: translateX(100%); 
 }
 
 
 .menu-toggle-button {
-  display: none; /* Alapértelmezés szerint rejtett */
-  position: absolute; /* Rögzített pozíció mobilon */
-  right: 16px; /* Jobb oldali távolság */
-  z-index: 1000; /* A gomb mindig felül lesz */
-  background-color: transparent; /* Átlátszó háttér */
-  border: none; /* Nincs keret */
-  cursor: pointer; /* Kéz mutató */
+  display: none; 
+  position: absolute; 
+  right: 16px; 
+  z-index: 1000; 
+  background-color: transparent; 
+  border: none; 
+  cursor: pointer; 
   padding: 10px;
 }
 

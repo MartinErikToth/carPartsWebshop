@@ -1,13 +1,5 @@
 <div class="signup-container">
-  <h1>Create Account</h1>
-
-  <div *ngIf="isLoading" class="loading-container">
-    <h2>Regisztráció folyamatban..</h2>
-    <mat-spinner diameter="50"></mat-spinner>
-    <p>Kérlek várj, feldolgozás folyamatban...</p>
-  </div>
-
-
+  <h1>Regisztráció</h1>
   <form [hidden]="!showForm" [formGroup]="signUpForm" (ngSubmit)="signup()" class="signup-form">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>

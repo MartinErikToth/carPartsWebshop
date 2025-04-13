@@ -22,17 +22,11 @@ export class MenuComponent implements OnInit, AfterViewInit {
   @Input() isLoggedIn: boolean = false;
   @Output() logoutEvent = new EventEmitter<void>();
 
-  constructor() {
-    console.log("constructor called");
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-    console.log("ngOnInit called");
-  }
+  ngOnInit(): void {}
 
-  ngAfterViewInit(): void {
-    console.log("ngAfterViewInit called");
-  }
+  ngAfterViewInit(): void {}
 
   closeMenu() {
     if (this.sidenav) {

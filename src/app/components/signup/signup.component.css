@@ -1,4 +1,4 @@
-/* General Reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@ body {
   height: 100vh;
 }
 
-/* Signup Container */
+
 .signup-container {
   max-width: 500px;
   margin: 40px auto;
@@ -29,24 +29,23 @@ body {
   border: 1px solid #ddd;
 }
 
-/* Header styles for Signup */
+
 .signup-container h1 {
   margin-bottom: 20px;
   color: #333;
   font-size: 26px;
   font-weight: 700;
-  text-transform: uppercase; /* For a more professional look */
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* Form styles */
+
 .signup-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Input field styles */
 .signup-form input {
   padding: 14px 18px;
   border: 1px solid #ddd;
@@ -58,12 +57,12 @@ body {
 }
 
 .signup-form input:focus {
-  border-color: #007BFF; /* Blue color for focus */
+  border-color: #007BFF; 
   background-color: #fff;
   outline: none;
 }
 
-/* Name Row styling (For first and last name fields) */
+
 .name-row {
   display: flex;
   gap: 16px;
@@ -73,7 +72,6 @@ body {
   flex: 1;
 }
 
-/* Buttons Row styling (For submit and cancel buttons) */
 .buttons-row {
   display: flex;
   gap: 16px;
@@ -81,10 +79,10 @@ body {
   margin-top: 16px;
 }
 
-/* Button styles for the Signup form */
+
 .signup-form button {
   padding: 14px 18px;
-  background-color: #007BFF; /* Blue button for a modern look */
+  background-color: #007BFF; 
   color: white;
   border: none;
   border-radius: 8px;
@@ -94,17 +92,17 @@ body {
 }
 
 .signup-form button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
-/* Error message styling */
+
 .error-message {
-  color: #d9534f; /* Red color for error message */
+  color: #d9534f; 
   margin-top: -10px;
   font-size: 14px;
 }
 
-/* Loading container styles */
+
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -125,7 +123,7 @@ body {
   color: #555;
 }
 
-/* Responsive design */
+
 @media (max-width: 576px) {
   .name-row, .buttons-row {
     flex-direction: column;

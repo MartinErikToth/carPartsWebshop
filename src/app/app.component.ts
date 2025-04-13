@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
       this.checkIfHomePage();
-      this.checkLoginStatus();  // Frissítjük az isLoggedIn állapotot
+      this.checkLoginStatus(); 
     });
 
     this.checkIfHomePage();

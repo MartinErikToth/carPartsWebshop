@@ -21,12 +21,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
-  selectedIndex = 0; // Kezdő index, ha van több profil
-  ProfileObject: any[] = []; // Az összes felhasználói profil
-  language: string = 'hu';
-  isDarkMode: boolean = false;
-  userEmail: string = ''; // A felhasználó emailje
-  userName: string = '';  // A felhasználó neve
+  selectedIndex = 0; 
+  ProfileObject: any[] = [];
+  userEmail: string = ''; 
+  userName: string = '';  
 
   constructor() {}
 
@@ -38,7 +36,6 @@ export class ProfileComponent implements OnInit {
       }
     }
   
-    // A bejelentkezett felhasználó adatainak frissítése
     const currentProfile = this.ProfileObject.find(profile => profile.email === localStorage.getItem('userEmail'));
     if (currentProfile) {
       this.userName = `${currentProfile.name.firstname} ${currentProfile.name.lastname}`;

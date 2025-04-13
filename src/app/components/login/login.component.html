@@ -1,12 +1,5 @@
 <div class="login-container">
   <h1>Bejelentkezés</h1>
-
-  <div *ngIf="isLoading" class="loading-container">
-    <h2>Betöltés...</h2>
-    <mat-spinner diameter="50"></mat-spinner>
-    <p>Kérlek várj, feldolgozás folyamatban</p>
-  </div>
-
   <form [hidden]="!showLoginForm" (ngSubmit)="login()" class="login-form">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>

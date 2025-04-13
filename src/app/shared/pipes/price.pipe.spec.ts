@@ -1,4 +1,4 @@
-import { PricePipe } from '../../pipes/price.pipe';
+import { PricePipe } from "./price.pipe";
 
 describe('PricePipe', () => {
   it('create an instance', () => {

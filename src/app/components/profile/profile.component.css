@@ -1,4 +1,4 @@
-/* Profile Container */
+
 .profile-container {
   display: grid;
   gap: 20px;
@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-/* Card Styles */
+
 .profile-card mat-card {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -20,7 +20,7 @@
   padding: 20px;
 }
 
-/* Card Header Styles */
+
 mat-card-header {
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@ mat-card-title {
   margin: 0;
 }
 
-/* Profile Info */
+
 .profile-info {
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@ mat-card-title {
   margin-top: 16px;
 }
 
-/* Avatar */
+
 .avatar-container {
   margin-right: 24px;
 }
@@ -66,7 +66,7 @@ mat-card-title {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* User Details */
+
 .user-details {
   display: flex;
   flex-direction: column;
@@ -94,63 +94,8 @@ mat-card-title {
   }
 }
 
-/* Stats Section */
-.stats-section {
-  margin-top: 24px;
-}
-
-.stats-cards {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 16px;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
-}
-
-.stat-card {
-  flex: 1;
-  background-color: #f9f9f9;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  min-width: 250px;
-  margin-bottom: 16px;
-}
-
-.stat-card mat-card-title {
-  font-size: 22px;
-  margin-bottom: 8px;
-}
-
-.stat-card mat-card-subtitle {
-  font-size: 16px;
-  color: #888;
-}
 
 mat-icon {
-  color: #5a4af7;
-}
-
-/* Completion Card */
-.completion-card {
-  margin-top: 16px;
-}
-
-.completion-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.completion-header h3 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.completion-value {
-  font-size: 22px;
-  font-weight: 500;
   color: #5a4af7;
 }
 
@@ -198,10 +143,9 @@ footer {
   text-decoration: underline;
   }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .profile-container {
-    grid-template-columns: 1fr; /* 1 column layout on smaller screens */
+    grid-template-columns: 1fr; 
     gap: 16px;
   }
 

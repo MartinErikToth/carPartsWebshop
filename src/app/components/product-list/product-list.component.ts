@@ -55,10 +55,8 @@ export class ProductListComponent implements OnInit {
     const existingProduct = this.cart.find(item => item.id === product.id);
   
     if (existingProduct) {
-      // Ha már létezik a termék a kosárban, növeljük a mennyiséget
       existingProduct.quantity += product.selectedQuantity;
     } else {
-      // Ha még nincs a kosárban, hozzáadjuk
       this.cart.push({ 
         ...product, 
         quantity: product.selectedQuantity, 
@@ -66,18 +64,15 @@ export class ProductListComponent implements OnInit {
       });
     }
   
-    // A termék mennyiségét frissítjük a terméklistában is
     const productInList = this.products.find(p => p.id === product.id);
     if (productInList) {
       productInList.selectedQuantity = product.selectedQuantity;
     }
   
-    // Mentjük a kosarat localStorage-ba
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem('cart', JSON.stringify(this.cart));
     }
   
-    // Üzenet megjelenítése
     this.snackBar.open(`${product.name} hozzáadva a kosárhoz.`, 'OK', { duration: 3000 });
   }
   

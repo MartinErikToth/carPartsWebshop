@@ -12,13 +12,13 @@
   align-items: center;
   margin-bottom: 2rem;
   text-align: left;
-  flex-wrap: wrap; /* Ha szükséges, a tartalom új sorba törhet */
+  flex-wrap: wrap; 
 }
 
 .header-container h1 {
   font-size: 2.5rem;
   color: #333;
-  margin-right: 2rem; /* Néhány hely a cím és a többi elem között */
+  margin-right: 2rem; 
 }
 
 .search-box,
@@ -190,7 +190,6 @@ footer {
   text-decoration: underline;
   }
 
-/* Add responsiveness for smaller screens */
 @media (max-width: 768px) {
   .header-container {
     flex-direction: column;

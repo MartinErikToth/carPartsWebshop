@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    RouterModule // Import RouterModule to use routerLink
+    RouterModule 
   ],  
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -48,9 +48,9 @@ export class LoginComponent {
       localStorage.setItem('isLoggedIn', 'true');
       setTimeout(() => {
         this.router.navigate(['/profile']);
-      }, 3000);
+      });
     } else {
-      this.loginError = 'Hibás felhasználó név vagy jelszó!';  // Correct error message
+      this.loginError = 'Hibás felhasználó név vagy jelszó!';  
     }
   }
 }
