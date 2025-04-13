@@ -3,9 +3,9 @@ export const ProfileObject = [
     id: 1,
     email: 'example@example.com',
     name: {
-      firstname: 'John',
-      lastname: 'Doe'
+      firstname: 'Példa',
+      lastname: 'Név'
     },
-    avatar: 'X)', // Alapértelmezett avatar
+    avatar: 'X)', 
   }
 ];
