@@ -10,7 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirectálás /home-ra
+    { path: '', redirectTo: '/home', pathMatch: 'full' }, 
     { path: 'home', component: HomeComponent },
     { path: 'products', component: ProductListComponent },
     { path: 'products/:id', component: ProductDetailComponent },

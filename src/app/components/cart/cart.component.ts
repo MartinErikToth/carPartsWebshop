@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -13,12 +13,22 @@ import { CommonModule } from '@angular/common';
 })
 export class CartComponent implements OnInit {
   cart: { id: number; name: string; price: number; originalPrice: number; category: string; quantity: number; image: string }[] = [];
+  @Output() clearCartFeedback = new EventEmitter<void>();
+  @Output() updateCart = new EventEmitter<any[]>();
 
   constructor(private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit() {
     this.loadCart();
   }
+
+  updateCart2() {
+    this.updateCart.emit(this.cart);
+  }
+
+  handleUpdateCart(updatedCart: any[]) {
+  console.log('Frissített kosár:', updatedCart);
+}
 
   private loadCart(): void {
     if (this.isLocalStorageAvailable()) {
@@ -46,6 +56,7 @@ export class CartComponent implements OnInit {
       localStorage.removeItem('cart');
     }
     this.snackBar.open('A kosár törölve lett.', 'OK', { duration: 3000 });
+    this.clearCartFeedback.emit();
   }
 
   removeFromCart(index: number) {
@@ -89,5 +100,9 @@ export class CartComponent implements OnInit {
 
   getTotalPrice(): number {
     return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  }
+
+  handleClearCart() {
+    console.log("A kosár törölve lett.");
   }
 }
