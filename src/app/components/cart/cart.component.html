@@ -7,9 +7,13 @@
           <h2 class="item-name">{{ item.name }}</h2>
           <img *ngIf="item.image" [src]="item.image" alt="{{ item.name }}" class="cart-item-image" />
           <p class="item-category">Kategória: {{ item.category }}</p>
-          <p class="item-price">Ár: {{ item.price | currency: 'HUF '}}</p>
+          <p class="item-price">
+            Ár: {{ item.price | currency: 'HUF ' }}
+          </p>
           <p class="item-quantity">Mennyiség: {{ item.quantity}}</p>
-          <p class="item-total-price">Összesen: {{ (item.price * item.quantity) | currency: 'HUF ' }}</p>
+          <p class="item-total-price">
+            Összesen: {{ item.price * item.quantity | currency: 'HUF ' }}
+          </p>
           <button class="remove-button" (click)="removeFromCart(i)">Eltávolítás</button>
         </div>
       </div>
@@ -21,10 +25,8 @@
 
 
     <div *ngIf="cart.length > 0" class="cart-actions">
-      <div class="button-container">
-        <button class="checkout-button" (click)="proceedToCheckout()">Fizetés</button>
-        <button class="clear-cart-button" (click)="clearCart()">Kosár törlése</button>
-      </div>
+      <button class="checkout-button" (click)="proceedToCheckout()">Fizetés</button>
+      <button class="clear-cart-button" (click)="clearCart()">Kosár törlése</button>
     </div>
 </div>
 <footer>
@@ -44,4 +46,4 @@
             <p>© 2025 Autoalkatrész Webshop. Minden jog fenntartva.</p>
         </div>
     </div>
-    </footer>
+</footer>

@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cart: { id: number; name: string; price: number; category: string; quantity: number; image: string }[] = [];
+  cart: { id: number; name: string; price: number; originalPrice: number; category: string; quantity: number; image: string }[] = [];
 
   constructor(private snackBar: MatSnackBar, private router: Router) {}
 

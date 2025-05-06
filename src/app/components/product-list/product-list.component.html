@@ -15,10 +15,11 @@
             <mat-card-title>{{ product.name }}</mat-card-title>
             <mat-card-content>
                 <p>Kategória: {{ product.category }}</p>
-                <p>Ár: {{ product.price | price }}</p>
+                <p>Eredeti ár: <span class="original-price">{{ product.price | price }}</span></p>
+                <p>Akciós ár: <span class="discounted-price">{{ product.price | discountPrice:10 |currency: 'HUF ' }}</span></p>
                 <label [for]="'quantity-' + product.id">Mennyiség:</label>
                 <input type="number" [id]="'quantity-' + product.id" min="1" [(ngModel)]="product.selectedQuantity" />
-            </mat-card-content>
+              </mat-card-content>
             <button mat-raised-button color="accent" (click)="addToCart(product)">Kosárba</button>
             </mat-card>
         </div>
