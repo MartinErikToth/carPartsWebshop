@@ -1,56 +1,60 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';  // Import Router and RouterModule
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { CommonModule } from '@angular/common';
+import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatProgressSpinnerModule,
-    RouterModule 
-  ],  
+    MatProgressSpinnerModule
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
 export class LoginComponent {
-  email = new FormControl('');
-  password = new FormControl('');
-  isLoading: boolean = false;
-  loginError: string = '';
-  showLoginForm: boolean = true;
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required)
+  });
+
+  isLoading = false;
+  loginError = '';
+  showLoginForm = true;
+  isLoggedIn = false;
 
   constructor(private router: Router) {}
 
   login() {
     this.loginError = '';
+    this.isLoading = true;
 
-    const storedEmail = localStorage.getItem('userEmail');
-    const storedPassword = localStorage.getItem('userPassword');
+    const auth = getAuth();
+    const email = this.loginForm.get('email')?.value!;
+    const password = this.loginForm.get('password')?.value!;
 
-    if (this.email.value === storedEmail && this.password.value === storedPassword) {
-      this.isLoading = true;
-      this.showLoginForm = false;
-
-      localStorage.setItem('isLoggedIn', 'true');
-      setTimeout(() => {
-        this.router.navigate(['/profile']);
-      });
-    } else {
-      this.loginError = 'Hibás felhasználó név vagy jelszó!';  
-    }
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      localStorage.setItem('user', JSON.stringify(userCredential.user));
+      this.router.navigate(['/profile']);
+      this.isLoggedIn = true;
+    })
+    .catch(err => {
+      this.loginError = 'Bejelentkezési hiba: ' + err.message;
+      this.isLoading = false;
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { User } from '../../shared/users/User';
 import { ProfileObject } from '../../shared/users/constant';
+import { Auth, createUserWithEmailAndPassword, getAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-signup',
@@ -27,65 +28,41 @@ import { ProfileObject } from '../../shared/users/constant';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
+  private auth: Auth = inject(Auth);
   signUpForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     rePassword: new FormControl('', [Validators.required]),
-    name: new FormGroup({
-      firstname: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      lastname: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    })
   });
 
   isLoading = false;
-  showForm = true;
   signupError = '';
+  showForm = true;
 
   constructor(private router: Router) {}
 
   signup(): void {
     if (this.signUpForm.invalid) {
-      this.signupError = 'Ellenőzizd a megadott adatok helyességét!';
+      this.signupError = 'Ellenőrizd az adatokat!';
       return;
     }
-  
-    const password = this.signUpForm.get('password');
-    const rePassword = this.signUpForm.get('rePassword');
-  
-    if (password?.value !== rePassword?.value) {
-      return;
-    }
-  
-    this.isLoading = true;
-    this.showForm = false;
-  
-    const newUser: User = {
-      name: {
-        firstname: this.signUpForm.value.name?.firstname || '',
-        lastname: this.signUpForm.value.name?.lastname || ''
-      },
-      email: this.signUpForm.value.email || '',
-      password: this.signUpForm.value.password || '',
-    };
-  
-    localStorage.setItem('userEmail', newUser.email);
-    localStorage.setItem('userPassword', newUser.password);
-  
-    const storedProfiles = localStorage.getItem('ProfileObject');
-    const profileObject = storedProfiles ? JSON.parse(storedProfiles) : [];
-  
-    profileObject.push({
-      id: profileObject.length + 1,
-      email: newUser.email,
-      name: newUser.name,
-      avatar: 'X)', 
-    });
-  
-    localStorage.setItem('ProfileObject', JSON.stringify(profileObject));
 
-  
-    setTimeout(() => {
-      this.router.navigateByUrl('/login');
-    });
-  }  
+    const { email, password, rePassword } = this.signUpForm.value;
+    if (password !== rePassword) {
+      this.signupError = 'A jelszavak nem egyeznek!';
+      return;
+    }
+
+    this.isLoading = true;
+
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email!, password!)
+      .then(() => {
+        this.router.navigate(['/login']);
+      })
+      .catch(err => {
+        this.signupError = 'Regisztrációs hiba: ' + err.message;
+        this.isLoading = false;
+      });
+  }
 }

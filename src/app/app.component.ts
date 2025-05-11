@@ -8,6 +8,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { auth } from './enviroment';
 
 @Component({
   selector: 'app-root',
@@ -31,21 +33,14 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
   isHomePage = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router) {}
-
-  ngOnInit(): void {
-    this.checkLoginStatus();
-
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.checkIfHomePage();
-      this.checkLoginStatus(); 
-    });
-
-    this.checkIfHomePage();
+  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router) {
   }
 
+  ngOnInit(): void {
+    onAuthStateChanged(auth, (user) => {
+      this.isLoggedIn = !!user;
+    });
+  }
   checkLoginStatus(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
