@@ -17,6 +17,7 @@
         <th>Ár</th>
         <th>Kép</th>
         <th>Műveletek</th>
+        <th>Vásárlás</th>
       </tr>
     </thead>
     <tbody>
@@ -25,10 +26,12 @@
         <td>{{ alk.kategoria }}</td>
         <td>{{ alk.ar }} Ft</td>
         <td><img [src]="alk.kepUrl" width="80"></td>
-        <td>
+        <td *ngIf="isLoggedIn">
           <button (click)="szerkeszt(alk)">Módosít</button>
           <button (click)="torles(alk.id)">Törlés</button>
-          <button (click)="addToCart(alk)">Kosárba</button>
+        </td>
+        <td>
+            <button (click)="addToCart(alk)">Kosárba</button>
         </td>
       </tr>
     </tbody>

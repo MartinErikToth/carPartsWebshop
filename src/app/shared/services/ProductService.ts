@@ -9,7 +9,6 @@ export interface Product {
   originalPrice: number,
   category: string;
   image: string;
-  // selectedQuantity csak a komponens működéséhez kell, nem kerül Firestore-ba
   selectedQuantity?: number;
 }
 
@@ -42,7 +41,7 @@ export class ProductService {
         price: product.price,
         category: product.category,
         image: product.image,
-        quantity: quantity  // itt kerül először a mennyiség, de CSAK a kosárba!
+        quantity: quantity 
       });
     }
   }

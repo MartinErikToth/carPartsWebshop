@@ -15,7 +15,7 @@
           </p>
           <p class="item-quantity">Mennyiség: {{ item.quantity}}</p>
           <p class="item-total-price">
-            Összesen: {{  item.price | discountPrice:10 | currency: 'HUF ' }}
+            Összesen: {{  item.price * item.quantity| discountPrice:10 | currency: 'HUF ' }}
           </p>
           <button class="remove-button" (click)="removeFromCart(i)">Eltávolítás</button>
         </div>

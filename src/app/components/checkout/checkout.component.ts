@@ -19,14 +19,6 @@ interface CartItem {
 })
 export class CheckoutComponent implements OnInit {
   cart: CartItem[] = [];
-  showModal: boolean = false;
-
-  paymentData = {
-    name: '',
-    cardNumber: '',
-    expiryDate: '',
-    cvv: ''
-  };
 
   ngOnInit() {
     if (typeof window !== 'undefined' && localStorage.getItem('cart')) {
@@ -60,14 +52,9 @@ export class CheckoutComponent implements OnInit {
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
-  openPaymentModal() {
-    this.showModal = true;
-  }
-
   confirmPayment() {
       alert('Fizetés sikeres! Köszönjük a vásárlást!');
       localStorage.removeItem('cart');
       this.cart = [];
-      this.showModal = false;
   }
 }

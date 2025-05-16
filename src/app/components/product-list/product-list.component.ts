@@ -1,20 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-import { PricePipe } from '../../shared/pipes/price.pipe';
-import { DiscountPricePipe } from '../../shared/pipes/discountprice.pipe';
-import { Product } from '../../shared/services/ProductService';
-import { CartItem } from '../../shared/services/ProductService';
-
 import { Firestore, collection, collectionData, addDoc, updateDoc, deleteDoc, doc, getDoc, setDoc } from '@angular/fire/firestore';
-import { getDownloadURL, ref, Storage, uploadBytes } from '@angular/fire/storage';
+import { Storage } from '@angular/fire/storage';
 import { Auth } from '@angular/fire/auth';
+import { AuthService } from '../../shared/services/auth.service';
 
 export interface Products {
   id: string;
@@ -33,10 +24,12 @@ export interface Products {
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent{
-  private firestore = inject(Firestore); // csak itt!
-  private storage = inject(Storage);     // csak itt!
+  private firestore = inject(Firestore); 
+  private storage = inject(Storage);     
   private snackBar = inject(MatSnackBar);
   private auth = inject(Auth);
+
+  isLoggedIn = false;
 
   alkatreszek: any[] = [];
   nev = '';
@@ -46,9 +39,16 @@ export class ProductListComponent{
   selectedFile: File | null = null;
   szerkesztesId: string | null = null;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.getAlkatreszek();
   }
+
+  ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe(status => {
+      this.isLoggedIn = status;
+    });
+  }
+
   addToCart(alk: any) {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
   

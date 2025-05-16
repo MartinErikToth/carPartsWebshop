@@ -9,7 +9,7 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { auth } from './enviroment';
+import { auth } from './shared/env/enviroment';
 
 @Component({
   selector: 'app-root',

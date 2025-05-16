@@ -20,11 +20,9 @@
               <button mat-button routerLink="/products" class="nav-button">Termékek</button>
               <button mat-button routerLink="/cart" class="nav-button">Kosár</button>
             
-              <!-- Ha be van jelentkezve -->
               <button *ngIf="isLoggedIn" mat-button routerLink="/profile" class="nav-button">Profil</button>
               <button *ngIf="isLoggedIn" mat-button class="nav-button" (click)="logout()">Kijelentkezés</button>
             
-              <!-- Ha nincs bejelentkezve -->
               <button *ngIf="!isLoggedIn" mat-button routerLink="/login" class="nav-button">Bejelentkezés</button>
             </ul>
 

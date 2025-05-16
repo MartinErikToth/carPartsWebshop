@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HOME_IMAGES } from '../../shared/homeImages/home-images';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -28,4 +29,5 @@ import { HOME_IMAGES } from '../../shared/homeImages/home-images';
 })
 export class HomeComponent {
   images = HOME_IMAGES;
+
 }

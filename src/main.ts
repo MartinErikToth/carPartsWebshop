@@ -9,7 +9,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
 import { AppComponent } from './app/app.component';
-import { environment } from './app/enviroment';
+import { environment } from './app/shared/env/enviroment';
 import { routes } from './app/app.routes';
 
 
@@ -18,10 +18,8 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(BrowserAnimationsModule),
     provideRouter(routes),
 
-    // Firebase inicializálása
     provideFirebaseApp(() => initializeApp(environment)),
 
-    // 🔥 Ezeket NE HAGYD KI:
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     provideAuth(() => getAuth()),

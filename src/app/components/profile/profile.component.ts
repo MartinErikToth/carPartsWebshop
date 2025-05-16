@@ -33,11 +33,8 @@ export class ProfileComponent implements OnInit {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // Felhasználó be van jelentkezve, mentjük az emailt és a nevet
-        this.userEmail = user.email || '';  // Email mentése
-        this.userName = user.displayName || 'Felhasználó';  // Név mentése (ha van)
-        
-        // Ha van további profil adat (pl. avatar), azt is kezelheted itt
+        this.userEmail = user.email || '';  
+        this.userName = user.displayName || 'Felhasználó';  
         this.ProfileObject = [
           {
             avatar: user.photoURL || 'X)'
@@ -45,7 +42,6 @@ export class ProfileComponent implements OnInit {
           }
         ];
       } else {
-        // Ha nincs bejelentkezett felhasználó
         this.userEmail = '';
         this.userName = '';
       }
