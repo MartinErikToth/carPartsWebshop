@@ -2,11 +2,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { DiscountPricePipe } from '../../shared/pipes/discountprice.pipe';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DiscountPricePipe],
   template: ``,
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
@@ -105,4 +106,6 @@ export class CartComponent implements OnInit {
   handleClearCart() {
     console.log("A kosár törölve lett.");
   }
+
+  
 }

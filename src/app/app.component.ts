@@ -53,12 +53,19 @@ export class AppComponent implements OnInit {
   }
 
   logout(): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('isLoggedIn', 'false');
-    }
-    this.isLoggedIn = false;
-    this.changeDetectorRef.detectChanges(); 
-    window.location.href = '/login'; 
+    const auth = getAuth();
+    auth.signOut()
+      .then(() => {
+        if (typeof window !== 'undefined' && window.localStorage) {
+          localStorage.setItem('isLoggedIn', 'false');
+        }
+        this.isLoggedIn = false;
+        this.changeDetectorRef.detectChanges();
+        this.router.navigate(['/login']);  
+      })
+      .catch((error) => {
+        console.error('Logout error:', error);
+      });
   }
 
   login(): void {

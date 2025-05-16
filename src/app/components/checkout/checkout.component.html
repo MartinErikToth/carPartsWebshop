@@ -24,7 +24,7 @@
               {{ item.quantity }}
               <button class="quantity-btn" (click)="increaseQuantity(item)">+</button>
             </td>
-            <td>{{ item.price * item.quantity | currency: 'HUF ' }}</td>
+            <td>{{  item.price | discountPrice:10 | currency: 'HUF ' }}</td>
             <td>
               <button class="delete-btn" (click)="removeItem(item)">
                 <i class="fa fa-trash"></i>
@@ -38,7 +38,7 @@
       </div>
     </div>
   
-    <button class="payment-button" (click)="openPaymentModal()">Fizetés</button>
+    <button class="payment-button" (click)="confirmPayment()">Fizetés</button>
   
     <div class="modal-overlay" *ngIf="showModal"></div>
     <div class="modal" *ngIf="showModal">

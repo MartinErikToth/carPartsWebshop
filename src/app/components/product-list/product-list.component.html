@@ -1,49 +1,55 @@
-<body>
-    <div class="product-list">
-        <div class="header-container">
-            <h1>Termékek</h1>
-            <input type="text" [(ngModel)]="searchTerm" placeholder="Keresés..." class="search-box">
-            <select [(ngModel)]="selectedCategory" class="category-filter">
-            <option value="">Összes</option>
-            <option *ngFor="let category of uniqueCategories" [value]="category">{{ category }}</option>
-            </select>
-        </div>
-        
-        <div class="grid-container">
-            <mat-card *ngFor="let product of filteredProducts()" class="product-card">
-            <img [src]="product.image" alt="{{ product.name }}" />
-            <mat-card-title>{{ product.name }}</mat-card-title>
-            <mat-card-content>
-                <p>Kategória: {{ product.category }}</p>
-                <p>Eredeti ár: <span class="original-price">{{ product.price | price }}</span></p>
-                <p>Akciós ár: <span class="discounted-price">{{ product.price | discountPrice:10 |currency: 'HUF ' }}</span></p>
-                <label [for]="'quantity-' + product.id">Mennyiség:</label>
-                <input type="number" [id]="'quantity-' + product.id" min="1" [(ngModel)]="product.selectedQuantity" />
-              </mat-card-content>
-            <button mat-raised-button color="accent" (click)="addToCart(product)">Kosárba</button>
-            </mat-card>
-        </div>
-        <div *ngIf="filteredProducts().length === 0" class="no-results">
-            <p>Nincs találat a keresési feltételek alapján.</p>
-        </div>
-        <button class="kosarMegtekintes" mat-raised-button color="primary" [routerLink]="'/cart'">Kosár megtekintése</button>
+<div class="form-container">
+    <h2>Alkatrész hozzáadása / szerkesztése</h2>
+    <input [(ngModel)]="nev" placeholder="Név">
+    <input [(ngModel)]="kategoria" placeholder="Kategória">
+    <input type="number" [(ngModel)]="ar" placeholder="Ár">
+    <label for="kepUrl">Kép URL:</label>
+    <input type="text" id="kepUrl" [(ngModel)]="kepUrl" placeholder="https://...">
+    <button (click)="mentes()">Mentés</button>
+    <button (click)="resetForm()">Űrlap törlése</button>
+  </div>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Név</th>
+        <th>Kategória</th>
+        <th>Ár</th>
+        <th>Kép</th>
+        <th>Műveletek</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alk of alkatreszek">
+        <td>{{ alk.nev }}</td>
+        <td>{{ alk.kategoria }}</td>
+        <td>{{ alk.ar }} Ft</td>
+        <td><img [src]="alk.kepUrl" width="80"></td>
+        <td>
+          <button (click)="szerkeszt(alk)">Módosít</button>
+          <button (click)="torles(alk.id)">Törlés</button>
+          <button (click)="addToCart(alk)">Kosárba</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <footer>
+    <div class="footer-content">
+      <div class="contact-info">
+        <h3>Kapcsolat</h3>
+        <p><strong>Telefon:</strong> +36 1 234 5678</p>
+        <p><strong>Email:</strong> info&#64;webshop.hu</p>
+      </div>
+      <div class="social-media">
+        <h3>Kövess minket!</h3>
+        <a href="#" class="social-link">Facebook</a> | 
+        <a href="#" class="social-link">Instagram</a> | 
+        <a href="#" class="social-link">Twitter</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Autoalkatrész Webshop. Minden jog fenntartva.</p>
+      </div>
     </div>
-    <footer>
-        <div class="footer-content">
-            <div class="contact-info">
-                <h3>Kapcsolat</h3>
-                <p><strong>Telefon:</strong> +36 1 234 5678</p>
-                <p><strong>Email:</strong> info&#64;webshop.hu</p>
-            </div>
-            <div class="social-media">
-                <h3>Kövess minket!</h3>
-                <a href="#" class="social-link">Facebook</a> | 
-                <a href="#" class="social-link">Instagram</a> | 
-                <a href="#" class="social-link">Twitter</a>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 Autoalkatrész Webshop. Minden jog fenntartva.</p>
-            </div>
-        </div>
-    </footer>
-</body>
+  </footer>
+  

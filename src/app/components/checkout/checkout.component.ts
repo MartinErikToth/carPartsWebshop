@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DiscountPricePipe } from '../../shared/pipes/discountprice.pipe';
 
 interface CartItem {
   name: string;
@@ -12,7 +13,7 @@ interface CartItem {
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, DiscountPricePipe],
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
@@ -37,7 +38,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   calculateTotal(): number {
-    return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return this.cart.reduce((total, item) => {
+      const discountPercent = 10;
+      const discountedPrice = item.price - (item.price * discountPercent / 100);
+      return total + (discountedPrice * item.quantity);
+    }, 0);
   }
 
   increaseQuantity(item: CartItem) {
@@ -60,13 +65,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   confirmPayment() {
-    if (this.paymentData.name && this.paymentData.cardNumber && this.paymentData.expiryDate && this.paymentData.cvv) {
       alert('Fizetés sikeres! Köszönjük a vásárlást!');
       localStorage.removeItem('cart');
       this.cart = [];
       this.showModal = false;
-    } else {
-      alert('Kérlek, töltsd ki az összes mezőt!');
-    }
   }
 }
