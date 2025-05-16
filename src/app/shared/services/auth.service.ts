@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Auth, user, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { getAuth, User } from 'firebase/auth';
+import { Firestore, collection, getDocs, query, orderBy, limit, where } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { User } from 'firebase/auth';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -9,13 +10,9 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
   user$: Observable<User | null>;
-  private currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
-  constructor(private auth: Auth) {
+  constructor(private auth: Auth, private firestore: Firestore) {
     this.user$ = user(this.auth);
-    this.user$.subscribe(user => {
-      this.currentUserSubject.next(user);
-    });
   }
 
   login(email: string, password: string) {
@@ -26,18 +23,31 @@ export class AuthService {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
-  getCurrentUser(): Observable<User | null> {
-    return this.currentUserSubject.asObservable();
+  logout(): Promise<void> {
+    return signOut(this.auth);
   }
 
   isLoggedIn(): Observable<boolean> {
-    return this.currentUserSubject.asObservable().pipe(
-      map(user => !!user)
-    );
+    return this.user$.pipe(map(user => !!user));
   }
 
-  logout(): Promise<void> {
-    const auth = getAuth();
-    return auth.signOut();
+  async getLegdragabbTermek(): Promise<any | null> {
+    const termekekRef = collection(this.firestore, 'alkatreszek');
+    const q = query(termekekRef, orderBy('ar', 'desc'), limit(1));
+    const snapshot = await getDocs(q);
+
+    if (!snapshot.empty) {
+      return snapshot.docs[0].data();
+    } else {
+      return null;
+    }
+  }
+
+  getMotorEsFekTermekek(): Promise<any[]> {
+    const termekekRef = collection(this.firestore, 'alkatreszek');
+    const q = query(termekekRef, where('kategoria', 'in', ['motor', 'fek']));
+    return getDocs(q).then(snapshot =>
+      snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    );
   }
 }

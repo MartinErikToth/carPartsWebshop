@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HOME_IMAGES } from '../../shared/homeImages/home-images';
+import { AuthService } from '../../shared/services/auth.service';
 
 
 @Component({
@@ -29,5 +30,20 @@ import { HOME_IMAGES } from '../../shared/homeImages/home-images';
 })
 export class HomeComponent {
   images = HOME_IMAGES;
+
+  legdragabbTermek: any = null;
+  motorFekTermekek: any[] = [];
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.authService.getLegdragabbTermek().then(termek => {
+      this.legdragabbTermek = termek;
+    });
+  
+    this.authService.getMotorEsFekTermekek().then(termekek => {
+      this.motorFekTermekek = termekek;
+    });
+  }
 
 }

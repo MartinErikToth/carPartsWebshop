@@ -19,7 +19,54 @@
             </div>
           </div>
         </section>
-    
+        <div class="kozepre-helyezett"></div>
+        <h2>💎 Legdrágább termék</h2>
+        <div class="kozepre-helyezett">
+        <table *ngIf="legdragabbTermek" border="1" cellpadding="10">
+          <thead>
+            <tr>
+              <th>Név</th>
+              <th>Kategória</th>
+              <th>Ár (Ft)</th>
+              <th>Kép</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ legdragabbTermek.nev }}</td>
+              <td>{{ legdragabbTermek.kategoria }}</td>
+              <td>{{ legdragabbTermek.ar | number:'1.0-0' }}</td>
+              <td>
+                <img class="firebaseKepek" [src]="legdragabbTermek.kepUrl" alt="{{ legdragabbTermek.nev }}" width="100" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <hr />
+        
+        <h2>🔧 Motor és Fék termékek</h2>
+        <table *ngIf="motorFekTermekek.length" border="1" cellpadding="10">
+          <thead>
+            <tr>
+              <th>Név</th>
+              <th>Kategória</th>
+              <th>Ár (Ft)</th>
+              <th>Kép</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let termek of motorFekTermekek">
+              <td>{{ termek.nev }}</td>
+              <td>{{ termek.kategoria }}</td>
+              <td>{{ termek.ar | number:'1.0-0' }}</td>
+              <td>
+                <img class="firebaseKepek" [src]="termek.kepUrl" alt="{{ termek.nev }}" width="100" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
         <section class="contact">
           <h2>Kapcsolatfelvétel</h2>
           <form class="contact-form">
