@@ -113,6 +113,12 @@
   text-align: center;
 }
 
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 
 .overlay-content button {
   padding: 10px 16px;

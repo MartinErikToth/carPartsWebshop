@@ -23,5 +23,9 @@
       <button mat-flat-button color="primary" type="submit">Regisztráció</button>
       <button mat-flat-button [routerLink]="['/login']">Van már fiókod? Kattints ide!</button>
     </div>
+
+    <div *ngIf="signupError" class="error-message">
+        {{ signupError }}
+    </div>
   </form>
 </div>

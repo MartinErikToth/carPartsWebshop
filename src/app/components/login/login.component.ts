@@ -53,7 +53,7 @@ export class LoginComponent {
       this.isLoggedIn = true;
     })
     .catch(err => {
-      this.loginError = 'Bejelentkezési hiba: ' + err.message;
+      this.loginError = 'Az email cím vagy a jelszó nem megfelelő.';
       this.isLoading = false;
     });
   }

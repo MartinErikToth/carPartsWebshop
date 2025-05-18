@@ -117,7 +117,11 @@ body {
   font-size: 22px;
   font-weight: 500;
 }
-
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 .loading-container p {
   font-size: 14px;
   color: #555;

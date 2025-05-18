@@ -13,11 +13,11 @@
       <mat-icon matSuffix>lock</mat-icon>
     </mat-form-field>
 
+    <button mat-flat-button color="primary" type="submit">Bejelentkezés</button>
+    <button mat-flat-button [routerLink]="'/signup'">Regisztráció</button>
+
     <div *ngIf="loginError" class="error-message">
       {{ loginError }}
     </div>
-
-    <button mat-flat-button color="primary" type="submit">Bejelentkezés</button>
-    <button mat-flat-button [routerLink]="'/signup'">Regisztráció</button>
   </form>
 </div>
