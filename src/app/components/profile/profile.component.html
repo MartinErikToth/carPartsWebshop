@@ -25,46 +25,34 @@
       </mat-card>
     </div>
 
-    <div class="profile-card">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Rendelések</mat-card-title>
-        </mat-card-header>
-
-        <mat-card-content>
-          <div class="profile-info">
-            <div class="user-details">
-              <h3 class="user-name">Rendeléseid</h3>
-              <div class="user-email">
-                <mat-icon>sort</mat-icon>
-                <span>Hamarosan...</span>
-              </div>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-
 
     <div class="profile-card">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Beállítások</mat-card-title>
-        </mat-card-header>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Beállítások</mat-card-title>
+    </mat-card-header>
 
-        <mat-card-content>
-          <div class="profile-info">
-            <div class="user-details">
-              <h3 class="user-name">Fiók beállításai</h3>
-              <div class="user-email">
-                <mat-icon>settings</mat-icon>
-                <span>A beállítások módosítása hamarosan...</span>
-              </div>
-            </div>
+    <mat-card-content>
+      <div class="profile-info">
+        <div class="user-details">
+          <h3 class="user-name">Fiók beállításai</h3>
+          <div class="user-email">
+            <mat-icon>email</mat-icon>
+            <span>Email: {{ userEmail }}</span>
           </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
+          <div class="email-change-container">
+
+  <div class="profile-actions">
+    <button mat-raised-button color="warn" (click)="deleteAccount()">
+      Fiók törlése
+    </button>
+  </div>
+</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  </div>
   </div>
 </body>
 <footer>
