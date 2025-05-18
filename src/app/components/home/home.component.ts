@@ -33,7 +33,7 @@ export class HomeComponent {
 
   legdragabbTermek: any = null;
   legolcsobbTermek: any = null;
-  legdragabbTermkeke: any = null;
+  dragaTermekek: any = null;
   motorFekTermekek: any[] = [];
 
   constructor(private authService: AuthService) {}
@@ -51,8 +51,8 @@ export class HomeComponent {
       this.legolcsobbTermek = termek;
     });
 
-    this.authService.getKettoLegdragabbTermek().then(termek => {
-      this.legdragabbTermkeke = termek;
+    this.authService.getDragaTermekek().then(termek => {
+      this.dragaTermekek = termek;
     })
   }
 

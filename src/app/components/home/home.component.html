@@ -20,7 +20,7 @@
           </div>
         </section>
         <div class="kozepre-helyezett"></div>
-        <h2>💎 Legdrágább termék</h2>
+        <h2>Legdrágább termék</h2>
         <div class="kozepre-helyezett">
         <table *ngIf="legdragabbTermek" border="1" cellpadding="10">
           <thead>
@@ -43,7 +43,7 @@
           </tbody>
         </table>
 
-        <h2>💎 Legolcsobbb termék</h2>
+        <h2>Legolcsobbb termék</h2>
         <div class="kozepre-helyezett">
         <table *ngIf="legolcsobbTermek" border="1" cellpadding="10">
           <thead>
@@ -66,9 +66,9 @@
           </tbody>
         </table>
 
-        <h2>💎 Legdrágább termékek</h2>
+        <h2>Drága termékek</h2>
         <div class="kozepre-helyezett">
-          <table *ngIf="legdragabbTermkeke && legdragabbTermkeke.length > 0" border="1" cellpadding="10">
+          <table *ngIf="dragaTermekek && dragaTermekek.length > 0" border="1" cellpadding="10">
             <thead>
               <tr>
                 <th>Név</th>
@@ -78,7 +78,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let termek of legdragabbTermkeke">
+              <tr *ngFor="let termek of dragaTermekek">
                 <td>{{ termek.nev }}</td>
                 <td>{{ termek.kategoria }}</td>
                 <td>{{ termek.ar | number:'1.0-0' }}</td>
@@ -93,7 +93,7 @@
         
         <hr />
         
-        <h2>🔧 Motor és Fék termékek</h2>
+        <h2>Motor és Fék termékek</h2>
         <table *ngIf="motorFekTermekek.length" border="1" cellpadding="10">
           <thead>
             <tr>

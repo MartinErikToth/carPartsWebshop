@@ -55,14 +55,12 @@ export class AuthService {
   }
 }
 
-  async getKettoLegdragabbTermek(): Promise<any[]> {
+  async getDragaTermekek(): Promise<any[]> {
   const termekekRef = collection(this.firestore, 'alkatreszek');
-  const q = query(termekekRef, orderBy('ar', 'desc'), limit(2));
-  const snapshot = await getDocs(q);
+  const dragaQuery = query(termekekRef, where('ar', '>', 10000));
+  const snapshot = await getDocs(dragaQuery);
 
-  const result: any[] = [];
-  snapshot.forEach(doc => result.push(doc.data()));
-  return result;
+  return snapshot.docs.map(doc => doc.data());
 }
 
 
