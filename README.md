@@ -1,10 +1,7 @@
 # AutoalkatreszWebshop
 
-Kedves Javitó(k)!
-
-Az app csak BÉTA, azaz csak mockolt adatokat töltök be mindig, amiket tetszés szerint lehet törölni, hozzáadni, frissiteni és egyéb..
-
-Vannak oldalak amiket csak a 2. mérföldkőre ilyen például a termékek leírása, admin oldal stb..
+hostolt link, ha Csn nem mukodne:
+https://autoalkatreszbolt-f69f7.web.app/
 
 
 
