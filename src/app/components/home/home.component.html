@@ -42,6 +42,54 @@
             </tr>
           </tbody>
         </table>
+
+        <h2>💎 Legolcsobbb termék</h2>
+        <div class="kozepre-helyezett">
+        <table *ngIf="legolcsobbTermek" border="1" cellpadding="10">
+          <thead>
+            <tr>
+              <th>Név</th>
+              <th>Kategória</th>
+              <th>Ár (Ft)</th>
+              <th>Kép</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ legolcsobbTermek.nev }}</td>
+              <td>{{ legolcsobbTermek.kategoria }}</td>
+              <td>{{ legolcsobbTermek.ar | number:'1.0-0' }}</td>
+              <td>
+                <img class="firebaseKepek" [src]="legolcsobbTermek.kepUrl" alt="{{ legolcsobbTermek.nev }}" width="100" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>💎 Legdrágább termékek</h2>
+        <div class="kozepre-helyezett">
+          <table *ngIf="legdragabbTermkeke && legdragabbTermkeke.length > 0" border="1" cellpadding="10">
+            <thead>
+              <tr>
+                <th>Név</th>
+                <th>Kategória</th>
+                <th>Ár (Ft)</th>
+                <th>Kép</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let termek of legdragabbTermkeke">
+                <td>{{ termek.nev }}</td>
+                <td>{{ termek.kategoria }}</td>
+                <td>{{ termek.ar | number:'1.0-0' }}</td>
+                <td>
+                  <img class="firebaseKepek" [src]="termek.kepUrl" alt="{{ termek.nev }}" width="100" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         
         <hr />
         
@@ -104,4 +152,3 @@
     </div>
 </div>
 </footer>
-</body>

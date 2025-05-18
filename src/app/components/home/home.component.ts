@@ -32,6 +32,8 @@ export class HomeComponent {
   images = HOME_IMAGES;
 
   legdragabbTermek: any = null;
+  legolcsobbTermek: any = null;
+  legdragabbTermkeke: any = null;
   motorFekTermekek: any[] = [];
 
   constructor(private authService: AuthService) {}
@@ -44,6 +46,14 @@ export class HomeComponent {
     this.authService.getMotorEsFekTermekek().then(termekek => {
       this.motorFekTermekek = termekek;
     });
+
+    this.authService.getLegolcsobbTermek().then(termek => {
+      this.legolcsobbTermek = termek;
+    });
+
+    this.authService.getKettoLegdragabbTermek().then(termek => {
+      this.legdragabbTermkeke = termek;
+    })
   }
 
 }

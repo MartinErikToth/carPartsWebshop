@@ -43,6 +43,29 @@ export class AuthService {
     }
   }
 
+  async getLegolcsobbTermek(): Promise<any | null> {
+  const termekekRef = collection(this.firestore, 'alkatreszek');
+  const q = query(termekekRef, orderBy('ar', 'asc'), limit(1));
+  const snapshot = await getDocs(q);
+
+  if (!snapshot.empty) {
+    return snapshot.docs[0].data();
+  } else {
+    return null;
+  }
+}
+
+  async getKettoLegdragabbTermek(): Promise<any[]> {
+  const termekekRef = collection(this.firestore, 'alkatreszek');
+  const q = query(termekekRef, orderBy('ar', 'desc'), limit(2));
+  const snapshot = await getDocs(q);
+
+  const result: any[] = [];
+  snapshot.forEach(doc => result.push(doc.data()));
+  return result;
+}
+
+
   getMotorEsFekTermekek(): Promise<any[]> {
     const termekekRef = collection(this.firestore, 'alkatreszek');
     const q = query(termekekRef, where('kategoria', 'in', ['motor', 'fek']));
