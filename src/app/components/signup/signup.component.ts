@@ -38,6 +38,7 @@ export class SignupComponent {
   isLoading = false;
   signupError = '';
   showForm = true;
+  isLoggedin = false;
 
   constructor(private router: Router) {}
 
@@ -52,13 +53,11 @@ export class SignupComponent {
       this.signupError = 'A jelszavak nem egyeznek!';
       return;
     }
-
-    this.isLoading = true;
-
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email!, password!)
       .then(() => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/profile']);
+        this.isLoggedin = false;
       })
       .catch(err => {
         this.signupError = 'Regisztrációs hiba: ' + err.message;
